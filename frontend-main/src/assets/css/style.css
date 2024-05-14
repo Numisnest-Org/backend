@@ -1,0 +1,107 @@
+.custom-container {
+  max-width: 1510px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.zoom-img .MuiBox-root.css-riz4oe {
+  max-width: 500px;
+  height: 80vh;
+  margin: auto;
+}
+
+.zoom-img .MuiBox-root.css-1k693xh {
+  display: flex;
+  align-items: center;
+}
+
+.zoom-img img {
+  margin: 0 !important;
+}
+
+.zoom-img button,
+.zoom-img button:hover {
+  width: 30px;
+  height: 30px;
+  background: #000;
+  color: #fff;
+}
+
+.zoom-img button svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sellerImg > img {
+  width: 120px;
+  height: 110px;
+  object-fit: contain;
+}
+
+.blue-btn {
+  padding: 8px 16px;
+  background-color: #0047ab;
+  border-radius: 8px;
+  font-family: Poppins;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.red-btn {
+  padding: 8px 16px;
+
+  background-color: #ee1a1a;
+  border-radius: 8px;
+  color: #fff !important;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none !important;
+}
+@media (min-width: 764px) {
+  .blue-btn {
+    padding: 12px 24px;
+  }
+  .red-btn {
+    padding: 12px 24px;
+  }
+}
+.SilimarCard > p {
+  text-align: left;
+  padding: 8px 0 16px;
+  word-break: break-all;
+}
+.drop-down {
+  width: fit-content;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 28px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 0.5rem;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 1rem;
+  margin-top: 0.9rem;
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+  box-shadow: 1px 2px 2px rgb(192, 189, 189);
+  z-index: 100;
+}
+.drop-down li {
+  list-style: none;
+  color: #0047ab;
+  cursor: pointer;
+}
+.active {
+  display: block;
+}
