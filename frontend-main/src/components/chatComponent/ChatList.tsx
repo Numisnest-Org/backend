@@ -62,7 +62,7 @@ const ChatList = ({ setActiveChat, activeChat, setActiveTab }: Props) => {
         setActiveChat({
           senderId: item ? item?.sender_id : '',
           roomId: item ? item?.room_id : '',
-          photo: item?.user_details?.[0].photo.secure_url,
+          photo: item?.user_details?.[0].photo?.secure_url,
           firstname: item?.user_details?.[0]?.first_name,
           lastname: item?.user_details?.[0]?.last_name,
         });

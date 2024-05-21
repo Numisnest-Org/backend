@@ -130,7 +130,7 @@ const SellerAbout = ({data }:Props) => {
       )}
       <SellerCard
         flag={data?.iso_code}
-        url={data?.photo.secure_url}
+        url={data?.photo?.secure_url}
         name={`${data?.first_name} ${data?.last_name}`}
         selling={data?.about}
         id={data?._id}

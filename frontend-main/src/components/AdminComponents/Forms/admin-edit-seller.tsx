@@ -49,7 +49,7 @@ const AdminEditsellerForm = ({ data, SellerId }: Props) => {
   >(data?.delivery_option);
   const [profilePhoto, setProfilePhoto] = useState<
     File | null | undefined | string
-  >(data?.photo.secure_url);
+  >(data?.photo?.secure_url);
   const [approved, setApproved] = useState<boolean | undefined>(data?.approved);
   const [suspended, setSuspended] = useState<boolean | undefined>(
     data?.suspended

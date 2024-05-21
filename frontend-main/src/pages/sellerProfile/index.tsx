@@ -83,7 +83,7 @@ const SellerProfile = () => {
         countryCode={profileData?.country_code}
         mobile={profileData?.mobile}
         deliveryOptions={profileData?.delivery_option}
-        url={profileData?.photo.secure_url}
+        url={profileData?.photo?.secure_url}
         country={profileData?.country}
         flag={profileData?.iso_code}
         profileDescription={profileData?.details}
