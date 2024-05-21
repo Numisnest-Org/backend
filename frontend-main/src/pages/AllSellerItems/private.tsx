@@ -69,7 +69,7 @@ const AllSellerItemsPrivatePage = () => {
       <Box sx={{ display: "flex", justifyContent: "end", mt: "2rem" }}>
         <SellerCard
           flag={data?.iso_code}
-          url={data?.photo.secure_url}
+          url={data?.photo?.secure_url}
           name={`${data?.first_name} ${data?.last_name}`}
           selling={data?.about}
           id={data?._id}

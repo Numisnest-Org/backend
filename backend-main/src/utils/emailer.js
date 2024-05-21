@@ -20,12 +20,21 @@ class Email {
     }
 
     async createTransport() {
-        const transport = nodemailer.createTransport({
-            service: "gmail",
+        // const transport = nodemailer.createTransport({
+        //     service: "gmail",
+        //     auth: {
+        //         user: process.env.MAILTRAP_USER,
+        //         pass: process.env.MAILTRAP_PASS,
+        //     },
+        // });
+
+        var transport = nodemailer.createTransport({
+            host: process.env.SMTP_HOST,
+            port: process.env.SMTP_PORT || 587,
             auth: {
-                user: process.env.MAILTRAP_USER,
-                pass: process.env.MAILTRAP_PASS,
-            },
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS,
+            }
         });
 
         return transport;
