@@ -169,7 +169,6 @@ const ItemDisplay = ({
       console.log(error);
     }
   };
-  console.log(data);
 
   return (
     <>
@@ -313,8 +312,8 @@ const ItemDisplay = ({
                         }}
                         component="span"
                       >{`${Math.round(
-                        Number(`${data?.convertedPrice}`)
-                      )} ${data?.convertedCurrency?.toUpperCase()}`}</Typography>
+                        Number(`${data?.convertedPrice} `)  || 0
+                      )} ${data?.convertedCurrency?.toUpperCase() ?? "ILS"}`}</Typography>
                     </Box>
                   </Box>
                   <Box className="pd-bottom" sx={{ pt: "47px" }}>
@@ -340,6 +339,9 @@ const ItemDisplay = ({
                       <Typography sx={{ fontSize: "14px" }}>
                         Category: {upperFirst(`${data?.category}`)}
                       </Typography>
+                      <Typography sx={{ fontSize: "14px" }}>
+                        Year: {upperFirst(`${data?.year}`)}
+                      </Typography>
                     </Box>
                   </Box>
                 </Box>
@@ -351,15 +353,17 @@ const ItemDisplay = ({
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "",
-                      gap: isMobile ? "2rem" : "10rem",
+                      justifyContent: "center",
+                      // alignItems: "center",
+                      // bgcolor:"red",
+                      gap: isMobile ? "2rem" : "8rem",
                       flexDirection: `${isMobile ? "column-reverse" : "row"}`,
                     }}
                   >
                     <Box
                       className="seller-details"
                       style={{ paddingInline: "10px" }}
-                      sx={{ pt: `${isMobile ? "10px" : "40px"}` }}
+                      sx={{ pt: `${isMobile ? "10px" : "40px"}`,  }}
                     >
                       <Typography
                         sx={{
@@ -371,14 +375,12 @@ const ItemDisplay = ({
                       </Typography>
                       <Box
                         sx={{
-                          paddingTop: "18px ",
-                          paddingBottom: "18px",
-                          paddingLeft: { xs: "10px", md: "16px" },
-                          paddingRight: { xs: "10px", md: "16px" },
+                          paddingLeft: "10px", 
+                          paddingRight:  "5px",
                           background: "#fff",
-                          border: "2px solid #00000099",
-                          borderRadius: "8px",
-                          maxWidth: `${isMobile ? "auto" : "566px"}`,
+                          border: "2px solid black",
+                          borderRadius: "20px",
+                          maxWidth: `${isMobile ? "auto" : "500px"}`,
                           display: "grid",
                           gap: { xs: "0.8rem", md: "1rem" },
                           placeItems: "center",
@@ -395,46 +397,50 @@ const ItemDisplay = ({
                         >
                           {data?.seller_info[0].photo.secure_url ? (
                             <img
-                              style={{ width: "100%" }}
+                              style={{ width: "80%" }}
                               src={data?.seller_info[0].photo.secure_url}
                               alt=""
                             />
                           ) : (
                             <img
-                              style={{ width: "100%" }}
+                              style={{ width: "80%" }}
                               src={avater}
                               alt=""
                             />
                           )}
                         </Box>
-                        <Box className="sellerText">
-                          <Typography
-                            className="sellerName"
-                            sx={{
-                              fontSize: { sx: "1rem", md: "1.2rem" },
-                              fontWeight: "600",
-                            }}
-                          >
-                            {upperFirst(`${data?.seller_info[0].first_name}`)}{" "}
-                            {upperFirst(`${data?.seller_info[0].last_name}`)}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              wordWrap: "break-word",
-                              width: "100%",
-                              maxWidth: { xs: "140px", md: "200px" },
-                              fontSize: { xs: ".7rem", md: ".8rem" },
-                            }}
-                          >
-                            {data?.seller_info[0].about}
-                          </Typography>
+                        <Box className="sellerText" sx={{ display: "flex" }}>
+                          <Box>
+                            <Typography
+                              className="sellerName"
+                              sx={{
+                                fontSize: { sx: "1rem", md: "24px" },
+                                fontWeight: "700",
+                                
+                              }}
+                            >
+                              {upperFirst(`${data?.seller_info[0].first_name}`)}{" "}
+                              {upperFirst(`${data?.seller_info[0].last_name}`)}
+                            </Typography>
+                            <Typography
+                              sx={{
+                                wordWrap: "break-word",
+                                width: "100%",
+                                maxWidth: { xs: "140px", md: "200px" },
+                                fontSize: { xs: ".7rem", md: ".8rem" },
+                              }}
+                            >
+                              {data?.seller_info[0].about}
+                            </Typography>
+                          </Box>
                         </Box>
                         <Box
-                          className="sellerbtn blue-btn"
-                          component={"div"}
+                          className="sellerbtn blue-btn "
+                          // component={"div"}
+                          sx={{marginBottom: "-40px",p:"4px",borderRadius:"5px"}}
                           onClick={messageSeller}
                         >
-                          Message Seller
+                          Message 
                         </Box>
                       </Box>
 
@@ -460,15 +466,17 @@ const ItemDisplay = ({
                         sx={{
                           background: "rgb(133 133 133 / 19%)",
                           p: "24px",
+                          paddingBottom:"20px",
                           borderRadius: "24px",
                           mt: `${isMobile ? "40px" : "70px"}`,
-                          maxWidth: `${isMobile ? "auto" : "500px"}`,
-                          width: "100%",
+                          maxWidth: `${isMobile ? "auto" : "700px"}`,
+                          width: "400px",
                         }}
                       >
                         <Typography
                           sx={{
                             display: "flex",
+                            alignItems: "center",
                             gap: "10px",
                             mb: "16px",
                             fontWeight: "600",

@@ -11,7 +11,6 @@ type Props = {
   imageArray:any[]
 };
 const ImageZoom = ({closeModal,contentWidth,filePath,height,imageArray}:Props) => {
-  console.log(imageArray)
  const filteredImages = imageArray.filter(
    (image:Photo) =>
      image && 
@@ -19,7 +18,6 @@ const ImageZoom = ({closeModal,contentWidth,filePath,height,imageArray}:Props) =
      image?.secure_url !== "" 
  );
  const [activeImage,setActiveImage]= useState<string>(filePath)
- console.log(filteredImages)
   return (
     <ModalWrapper contentWidth={contentWidth} height={height ? height : "auto"}>
       <IconButton
@@ -32,16 +30,16 @@ const ImageZoom = ({closeModal,contentWidth,filePath,height,imageArray}:Props) =
       >
         <Close />
       </IconButton>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }} className="overflow-y-auto" height={"80%"}>
         <img
           src={activeImage}
           alt="zoom"
-          style={{ width: "65%", height: "100%", marginTop: "2.5rem" }}
+          style={{ width: "65%", height: "100%", marginTop: "2.5rem", objectFit: "cover"}}
         />
       </Box>
       <Box sx={{display:'flex',gap:"1rem",mt:"2rem", width:"100%",justifyContent:"center"}}>
         {filteredImages.map((image: Photo) => (
-          <div onClick={()=>setActiveImage(image.secure_url)}>
+          <div onClick={()=>setActiveImage(image.secure_url)} style={{cursor: "pointer"}}>
             {image?.secure_url === "" && image?.public_id === "" ? (
               null
             ) : (

@@ -7,3 +7,25 @@
 p {
   font-family: 'Poppins', sans-serif;
 }
+
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-sm::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+.scrollbar-sm.scroll-hidden::-webkit-scrollbar {
+  display: none;
+  width: 0px !important;
+  height: 0px !important;
+}
+
+/* Track */
+.scrollbar-sm::-webkit-scrollbar-track {
+  background: #e0e0e0 !important;
+}
+
+/* Handle */
+.scrollbar-sm::-webkit-scrollbar-thumb {
+  background: #a5b6cf;
+}

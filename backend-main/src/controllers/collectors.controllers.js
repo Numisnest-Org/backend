@@ -2275,6 +2275,7 @@ export const getSellers = async (req, res) => {
 };
 
 export const getSeller = async (req, res) => {
+    const user = req.params;
     try {
         const checkVis = await SellerVisibilityModel.findOne({
             seller_id: user.id,
@@ -2468,7 +2469,7 @@ export const sellerItems = async (req, res) => {
         const seller = req.params.id;
 
         const checkVis = await SellerVisibilityModel.findOne({
-            seller_id: user.id,
+            seller_id: seller,
         });
 
         if (checkVis && !checkVis?.items) {
@@ -2748,7 +2749,7 @@ export const sellerItems = async (req, res) => {
 
         // return successResponse(res, 200, items, "seller items fetched");
     } catch (error) {
-        console.log(error1);
+        console.log(error);
         return serverError(res, 500, null, error.message);
     }
 };

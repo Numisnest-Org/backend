@@ -7,11 +7,11 @@ const DisclaimerPage = () => {
   useScrollToTop()
   return (
     <VisitorLayout>
-      <Box>
-        <Typography variant="h4" fontWeight={600}>
+      <Box >
+        <Typography variant="h4" fontWeight={600} sx={{ my: "2rem", fontSize:{xs:"22px",lg:"30px"} }}>
           Disclaimer of Liability:
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" sx={{ my: "2rem" }}>
           NUMISNEST provides a platform for users to sell and buy items. We do
           not own, sell, or offer for sale any of the items listed on our site.
           Each listing is the sole responsibility of the individual user who
@@ -24,8 +24,8 @@ const DisclaimerPage = () => {
           place on such information is therefore strictly at your own risk.
         </Typography>
       </Box>
-      <Box>
-        <Typography variant="h4" fontWeight={600}>
+      <Box sx={{ my: "1.5rem" }}>
+        <Typography variant="h4" fontWeight={600} sx={{ my: "2rem", fontSize:{xs:"22px",lg:"30px"} }}>
           User Responsibility:
         </Typography>
         <Typography variant="body1">
@@ -36,11 +36,11 @@ const DisclaimerPage = () => {
           between buyers and sellers.
         </Typography>
       </Box>
-      <Box>
-        <Typography variant="h4" fontWeight={600}>
+      <Box sx={{ my: "1.5rem" }}>
+        <Typography variant="h4" fontWeight={600} sx={{ my: "2rem", fontSize:{xs:"22px",lg:"30px"} }}>
           Dispute Resolution:
         </Typography>
-        <Typography variant="body1">
+        <Typography variant="body1" sx={{ mb: "2.5rem" }}>
           NUMISNEST is not liable for any disputes, claims, losses, injuries, or
           damage of any kind that might arise out of or in connection with any
           transaction, communication, or interaction initiated through our site.

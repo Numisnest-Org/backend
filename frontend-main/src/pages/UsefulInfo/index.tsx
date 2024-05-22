@@ -49,7 +49,7 @@ const UsefulInfromationPage = () => {
         >
           Useful Information
         </Typography>
-        <Typography
+        {/* <Typography
           sx={{
             textAlign: 'center',
             mt: '1rem',
@@ -57,7 +57,7 @@ const UsefulInfromationPage = () => {
           }}
         >
           Get access to useful information about numisnest here
-        </Typography>
+        </Typography> */}
       </Box>
       <Box
         sx={{ display: 'flex', alignItems: 'center', gap: '1rem', mt: '1rem' }}

@@ -100,7 +100,7 @@ const Itemdisplay2 = ({
       {typeof sellerId !== 'undefined' && (
         <Box>
           {user?._id === sellerId && (
-            <Box sx={{ position: 'relative', width: '120px' }}>
+            <Box sx={{ position: 'relative', width: '5px' }}>
               <button
                 className="blue-btn"
                 style={{
@@ -131,6 +131,7 @@ const Itemdisplay2 = ({
                     <img
                       style={{
                         width: '20px',
+                        backgroundColor: 'red',
                         height: '20px',
                         aspectRatio: '1',
                         cursor: 'pointer',
@@ -175,7 +176,7 @@ const Itemdisplay2 = ({
 
       <Box className="zoom-img">
         {Imagezoom && (
-          <ImageZoom contentWidth="95%" filePath={arr[activepic]?.secure_url} closeModal={()=>setImageZoom(false)} height='100%' imageArray={arr} />
+          <ImageZoom contentWidth="90%" filePath={arr[activepic]?.secure_url} closeModal={()=>setImageZoom(false)} height='90%' imageArray={arr}  />
         )}
       </Box>
       <Box
@@ -202,14 +203,14 @@ const Itemdisplay2 = ({
             flexDirection: isMobile ? 'row' : 'column',
             // maxHeight: '100%',
             // maxWidth: 'auto',
-            height: isMobile ? '100px' : 'unset',
+            height: isMobile ? '80px' : 'unset',
             aspectRatio: '1',
             gap: isMobile ? '1rem' : '1.2rem',
-            overflowX: isMobile ? 'scroll' : 'unset',
-            overflowY: !isMobile ? 'scroll' : 'hidden',
+            overflowX: isMobile ? 'auto' : 'unset',
+            overflowY: !isMobile ? 'auto' : 'hidden',
           }}
         >
-          {arr?.map(
+          {[...arr, ...arr, ...arr]?.map(
             (item: Photo, index) =>
               item?.secure_url !== '' &&
               item?.secure_url !== undefined && (
@@ -219,13 +220,15 @@ const Itemdisplay2 = ({
                   onClick={() => setActivepicture(index)}
                   sx={{
                     borderRadius: '8px',
-
                     objectFit: 'cover',
-                    height: '100%',
+                    height: isMobile? "60px": '90px',
                     width: '100%',
                     cursor: 'pointer',
                     bgcolor: '#fff',
-                    padding: '1rem',
+                    padding: '1rem 0.5rem',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     border: `${
                       index === activepic ? '2px solid #0047AB' : 'black'
                     }`,
@@ -238,7 +241,6 @@ const Itemdisplay2 = ({
                           <Box
                             sx={{
                               width: '100%',
-
                               objectFit: 'cover',
                               position: 'relative',
                             }}
@@ -247,7 +249,7 @@ const Itemdisplay2 = ({
                               src={videotag}
                               style={{
                                 position: 'absolute',
-                                width: '4rem',
+                                width: '50%',
                                 top: '50%',
                                 left: '50%',
                                 transform: 'translate(-50%, -50%)',
@@ -266,10 +268,9 @@ const Itemdisplay2 = ({
                         ) : (
                           <Box
                             sx={{
-                              width: '100px',
-                              height: '100%',
-                              backgroundImage: `url(${item?.secure_url})`,
-                              backgroundSize: 'contain',
+                              width: isMobile? "60px" : '100px',
+                              height: isMobile? "50px":'80px',
+                              backgroundSize: 'cover',
                               backgroundRepeat: 'no-repeat',
                               borderRadius: '0.5rem',
                               backgroundPosition: 'center',
@@ -282,11 +283,12 @@ const Itemdisplay2 = ({
                               src={item?.secure_url}
                               alt={`image-${index}`}
                               style={{
-                                display: isMobile ? 'none' : 'block',
+                                display: 'block',
                                 objectFit: 'cover',
-                                width: 'auto',
+                                width: '100%',
                                 maxWidth: '100%',
                                 height: '100%',
+                                borderRadius: '8px',
                               }}
                             />
                           </Box>
@@ -352,10 +354,12 @@ const Itemdisplay2 = ({
                 style={{
                   objectFit: 'contain',
                   width: '100%',
+                  borderRadius:"5px",
                   height: '100%',
                   display: 'block',
                   maxWidth: '100%',
-                  maxHeight: '532px',
+                  padding:"5px",
+                  maxHeight: '500px',
                 }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}

@@ -385,7 +385,7 @@ const ItemsComponets = ({
                   handleChange={(value) => setCurrency(value)}
                 /> */}
                 <input
-                  type="number"
+                  type="text"
                   value={startDate}
                   className="input"
                   min={1000}
@@ -420,7 +420,7 @@ const ItemsComponets = ({
                   to
                 </Typography>
                 <input
-                  type="number"
+                  type="text"
                   min={1000}
                   className="input"
                   max={new Date().getFullYear() + 1}
@@ -495,7 +495,7 @@ const ItemsComponets = ({
                 <Typography> {currency?.toUpperCase()} </Typography>
                 <Box sx={{ display: 'flex', gap: '.5rem' }}>
                   <input
-                    type="number"
+                    type="text"
                     value={minPrice}
                     placeholder="Min Price"
                     className="input"
@@ -515,7 +515,7 @@ const ItemsComponets = ({
                     to
                   </Typography>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Max Price"
                     value={maxPrice}
                     className="input"

@@ -10,7 +10,6 @@ import '/node_modules/flag-icons/css/flag-icons.min.css';
 import dayjs from 'dayjs';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import EditItemsModal from '../Modal/edit-ItemsModal';
 import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
 import { textFromat } from 'src/utilities/constants/helpers';
 import pin from 'src/assets/Image/Pin.svg';
@@ -63,25 +62,16 @@ const ItemsCard = ({
   selling,
   createdAt,
   amount,
-  bgColor,
   isFetching,
   currency,
-  height,
-  xsheight,
   id,
-  selected,
   cardtype = 'public',
   featured,
   addFeatured,
   available,
   setRefresh,
-  openModal,
   setItemId,
-  remCollection,
-  openDeleteModal,
   setShowEdit,
-  showEdit,
-  showDeletemodal,
   setShowDeletemodal,
 }: Props) => {
   const navigate = useNavigate();
@@ -241,8 +231,7 @@ const ItemsCard = ({
                     >
                       <img
                         style={{
-                          width: "15px",
-
+                          width: "300px",
                           aspectRatio: "1",
                         }}
                         src={item.icon}
@@ -334,10 +323,10 @@ const ItemsCard = ({
         sx={{
           width: "100%",
           // height: { xs: '200px', md: '250px' },
-          height:
-            flag || createdAt
-              ? { xs: '145px', sm: '150px', md: '250px' }
-              : { xs: '130px', md: '180px' },
+          // height:
+          //   flag || createdAt
+          //     ? { xs: '145px', sm: '150px', md: '250px' }
+          //     : { xs: '130px', md: '180px' },
           bgcolor: '#FFFFFF',
           border: '1px solid #E6E9F9',
           borderRadius: '1rem',
@@ -443,7 +432,7 @@ const ItemsCard = ({
                 sx={{
                   display: "grid",
                   gridTemplateColumns: "10px 1fr",
-                  gap: "0.2rem",
+                  gap: "0.5rem",
                   alignItems: "center",
                   paddingBottom: flag || createdAt ? "8px" : "",
                 }}
@@ -459,7 +448,7 @@ const ItemsCard = ({
                     {flag && (
                       <Box
                         component={"span"}
-                        sx={{ height: "6px" }}
+                        sx={{ height: "10px" }}
                         className={`fi fi-${flag?.toLowerCase()}`}
                       ></Box>
                     )}
@@ -530,7 +519,7 @@ const ItemsCard = ({
               <Box
                 sx={{
                   width: "80x",
-                  height: { xs: "60px", md: "100px" },
+                  height: "160px",
                   margin: "0 auto",
 
                   mt: cardtype === "Private" ? "10px" : "unset",
@@ -552,11 +541,13 @@ const ItemsCard = ({
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "cover",
+                      objectFit: "fill",
+                      objectPosition: "center"
                     }}
                   />
                 )}
               </Box>
+              
               {isFetching ? (
                 <Skeleton
                   variant="rectangular"
@@ -606,25 +597,6 @@ const ItemsCard = ({
                 ) : (
                   <Typography
                     sx={{
-                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
-                      color:
-                        dayjs().diff(createdAt, "days") > 21
-                          ? "red"
-                          : "#0047AB",
-                    }}
-                  >
-                    {createdAt ? dayjs(createdAt).format("DD.MM.YYYY") : ""}
-                  </Typography>
-                )}
-
-                {isFetching ? (
-                  <Skeleton
-                    variant="rectangular"
-                    sx={{ mt: "0.5rem", width: "30%" }}
-                  ></Skeleton>
-                ) : (
-                  <Typography
-                    sx={{
                       fontWeight: "700",
                       fontSize: { xs: "6px", md: "7px", lg: "10px" },
 
@@ -636,8 +608,27 @@ const ItemsCard = ({
                         maximumFractionDigits: 2,
                         minimumFractionDigits: 2,
                       }) || "0.00"
-                    } ${currency?.toUpperCase()}`}
+                    } ${currency?.toUpperCase() ?? ""}`}
                   </Typography>
+                )}
+
+                {isFetching ? (
+                  <Skeleton
+                    variant="rectangular"
+                    sx={{ mt: "0.5rem", width: "30%" }}
+                  ></Skeleton>
+                ) : (
+                  <Typography
+                    sx={{
+                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
+                      color:
+                        dayjs().diff(createdAt, "days") > 21
+                          ? "red"
+                          : "#0047AB",
+                    }}
+                  >
+                    {createdAt ? dayjs(createdAt).format("DD.MM") : ""}
+                </Typography>
                 )}
               </Box>
             </Box>
@@ -724,7 +715,7 @@ const ItemsCard = ({
                 </Button>
               )}
 
-              <Box
+              {/* <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -835,7 +826,7 @@ const ItemsCard = ({
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "cover",
+                      objectFit: "fill",
                     }}
                   />
                 )}
@@ -889,26 +880,7 @@ const ItemsCard = ({
                     sx={{ mt: "0.5rem", width: "40%" }}
                   ></Skeleton>
                 ) : (
-                  <Typography
-                    sx={{
-                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
-                      color:
-                        dayjs().diff(createdAt, "days") > 21
-                          ? "red"
-                          : "#0047AB",
-                    }}
-                  >
-                    {createdAt ? dayjs(createdAt).format("DD.MM.YYYY") : ""}
-                  </Typography>
-                )}
-
-                {isFetching ? (
-                  <Skeleton
-                    variant="rectangular"
-                    sx={{ mt: "0.5rem", width: "30%" }}
-                  ></Skeleton>
-                ) : (
-                  <Typography
+                   <Typography
                     sx={{
                       fontWeight: "700",
                       fontSize: { xs: "6px", md: "7px", lg: "10px" },
@@ -924,7 +896,27 @@ const ItemsCard = ({
                     } ${currency?.toUpperCase()}`}
                   </Typography>
                 )}
-              </Box>
+
+                {isFetching ? (
+                  <Skeleton
+                    variant="rectangular"
+                    sx={{ mt: "0.5rem", width: "30%" }}
+                  ></Skeleton>
+                  ) : (
+                      <Typography
+                    sx={{
+                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
+                      color:
+                        dayjs().diff(createdAt, "days") > 21
+                          ? "red"
+                          : "#0047AB",
+                    }}
+                  >
+                    {createdAt ? dayjs(createdAt).format("DD.MM.YYYY") : ""}
+                  </Typography>
+                 
+                )}
+              </Box> */}
             </Box>
           </div>
         )}
