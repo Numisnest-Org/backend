@@ -205,7 +205,7 @@ const Itemdisplay2 = ({
             // maxWidth: 'auto',
             height: isMobile ? '80px' : 'unset',
             aspectRatio: '1',
-            gap: isMobile ? '1rem' : '1.2rem',
+            gap: isMobile ? '1rem' : '0.4rem',
             overflowX: isMobile ? 'auto' : 'unset',
             overflowY: !isMobile ? 'auto' : 'hidden',
           }}
@@ -222,7 +222,7 @@ const Itemdisplay2 = ({
                     borderRadius: '8px',
                     objectFit: 'cover',
                     height: isMobile? "60px": '90px',
-                    width: '100%',
+                    width: isMobile? "70px": '100%',
                     cursor: 'pointer',
                     bgcolor: '#fff',
                     padding: '1rem 0.5rem',
