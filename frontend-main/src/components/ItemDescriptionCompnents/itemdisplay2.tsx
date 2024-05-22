@@ -210,7 +210,7 @@ const Itemdisplay2 = ({
             overflowY: !isMobile ? 'auto' : 'hidden',
           }}
         >
-          {[...arr, ...arr, ...arr]?.map(
+          {arr?.map(
             (item: Photo, index) =>
               item?.secure_url !== '' &&
               item?.secure_url !== undefined && (
