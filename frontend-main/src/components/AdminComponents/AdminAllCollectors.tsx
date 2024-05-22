@@ -195,7 +195,7 @@ const AdminAllCollectors = ({
               <AdminSellerCard
                 key={index}
                 flag={item?.iso_code}
-                url={item.photo.secure_url}
+                url={item.photo?.secure_url}
                 name={`${item.first_name} ${item.last_name}`}
                 selling={item.email}
                 isFetching={isFetching}

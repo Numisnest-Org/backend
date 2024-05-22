@@ -395,10 +395,10 @@ const ItemDisplay = ({
                           className="sellerImg"
                           sx={{ width: { xs: "60px", md: "100px" } }}
                         >
-                          {data?.seller_info[0].photo.secure_url ? (
+                          {data?.seller_info[0].photo?.secure_url ? (
                             <img
                               style={{ width: "80%" }}
-                              src={data?.seller_info[0].photo.secure_url}
+                              src={data?.seller_info[0].photo?.secure_url}
                               alt=""
                             />
                           ) : (
