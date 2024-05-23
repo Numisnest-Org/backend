@@ -312,7 +312,7 @@ const RegisterForm = ({ type }: Props) => {
                 </FormHelperText>
               </FormControl>
             </Box>
-            <Box sx={{ mt: "1.5rem" }}>
+            <Box sx={{ mt: "1rem" }}>
               <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Mobile</Box>
               <TextInput
                 fullWidth
