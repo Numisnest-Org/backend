@@ -93,20 +93,21 @@ const HomePage = () => {
       try {
         const response = await axiosPublic.get('duo/collector/pinned/items');
         const { data } = response.data;
-        setPinnedItems(data);
+        setPinnedItems(data??[]);
       } catch (error) {}
     };
     const fetchPinnedSellers = async () => {
       try {
         const response = await axiosPublic.get('duo/collector/pinned/sellers');
         const { data } = response.data;
-        setPinnedSeller(data);
+        setPinnedSeller(data??[]);
       } catch (error) {}
     };
     fetchPinnedItems();
     fetchPinnedSellers();
     fetchAll();
   }, [country, refresh]);
+
   useEffect(() => {
     const searchSellerandItems = async () => {
       try {
@@ -138,6 +139,8 @@ const HomePage = () => {
     };
     fetchAvailableCountries();
   }, []);
+
+  console.log(pinnedItems);
   return (
     <VisitorLayout>
       {/* <Box
@@ -176,13 +179,13 @@ const HomePage = () => {
       </Box>
 
       <Items
-        data={[...pinnedItems, ...allItems]} //{...pinnedItems}
+        data={[...pinnedItems, ...allItems]}
         isFetching={isFetching}
         itemsWithScreen={itemsWithScreen}
       />
 
       <Sellers
-        data={[...pinnedSellers, ...allSellers]} //{...pinnedSellers}
+        data={[...pinnedSellers, ...allSellers]}
         isFetching={isFetching}
         sellersWithScreen={sellersWithScreen}
       />

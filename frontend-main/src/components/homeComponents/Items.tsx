@@ -1,8 +1,8 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material';
-import SellersHeader from '../headers/SellersHeader';
-import ItemsCard from '../cards/ItemsCard';
-import { HomeItemType, ItemType, item } from 'src/utilities/types';
+import { Box } from '@mui/material';
 import LINKS from 'src/utilities/links';
+import { HomeItemType } from 'src/utilities/types';
+import ItemsCard from '../cards/ItemsCard';
+import SellersHeader from '../headers/SellersHeader';
 const Items = ({
   isFetching,
   data,
@@ -19,11 +19,11 @@ const Items = ({
           display: 'grid',
           mt: '2rem',
           gridTemplateColumns: {
-            xs: 'repeat(3, 1fr)',
+            xs: 'repeat(2, 1fr)',
             md: 'repeat(4, 1fr)',
-            lg: 'repeat(6, 1fr)',
+            lg: 'repeat(4, 1fr)',
           },
-          gap: { xs: '0.4rem', sm: '1rem' },
+          gap: { xs: '0.6rem', sm: '1rem' },
           position: 'relative',
           height: '100%',
         }}

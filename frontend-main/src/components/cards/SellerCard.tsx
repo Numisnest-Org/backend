@@ -1,21 +1,19 @@
 import {
   Box,
-  Typography,
   Skeleton,
-  useMediaQuery,
-  Button,
+  Typography,
+  useMediaQuery
 } from '@mui/material';
-import '/node_modules/flag-icons/css/flag-icons.min.css';
-import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react';
-import { Person3Outlined } from '@mui/icons-material';
-import avater from 'src/assets/Image/numisnest avater.jpg';
-import Image from '../Image';
-import { textFromat } from 'src/utilities/constants/helpers';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import approvedicon from 'src/assets/Image/AdminIcons/approved.svg';
 import notapprovedicon from 'src/assets/Image/AdminIcons/cancel.svg';
+import avater from 'src/assets/Image/numisnest avater.jpg';
 import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
-import { toast } from 'react-toastify';
+import { textFromat } from 'src/utilities/constants/helpers';
+import Image from '../Image';
+import '/node_modules/flag-icons/css/flag-icons.min.css';
 interface Props {
   flag?: string;
   url?: string;
@@ -44,7 +42,7 @@ const SellerCard = ({
   return (
     <Box
     sx={{height: 'auto'}}
-    
+
       onClick={() => (id ? naviagte(isFetching ? '' : `/seller/${id}`) : '')}
     >
       <Box
@@ -159,6 +157,7 @@ const SellerCard = ({
                   my: '1rem',
                   backgroundImage: `url(${url})`,
                   backgroundSize: 'cover',
+                  backgroundColor:"red",
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                 }}

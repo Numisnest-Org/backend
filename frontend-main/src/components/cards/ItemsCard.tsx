@@ -6,23 +6,23 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material';
-import '/node_modules/flag-icons/css/flag-icons.min.css';
 import dayjs from 'dayjs';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
-import { textFromat } from 'src/utilities/constants/helpers';
-import pin from 'src/assets/Image/Pin.svg';
 import _ from 'lodash';
-import Image from '../Image';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import rotateIcon from '../../assets/Image/rotate.png';
-import editIcon from '../../assets/Image/edit.png';
-import closeIcon from '../../assets/Image/close.png';
-import eyesIcon from '../../assets/Image/eyes.png';
-import deleteIcon from '../../assets/Image/delete.png';
-import humanIcon from '../../assets/Image/human.png';
+import pin from 'src/assets/Image/Pin.svg';
+import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
 import { PRIMARY_COLOR } from 'src/utilities/constants';
+import { textFromat } from 'src/utilities/constants/helpers';
+import closeIcon from '../../assets/Image/close.png';
+import deleteIcon from '../../assets/Image/delete.png';
+import editIcon from '../../assets/Image/edit.png';
+import eyesIcon from '../../assets/Image/eyes.png';
+import humanIcon from '../../assets/Image/human.png';
+import rotateIcon from '../../assets/Image/rotate.png';
+import Image from '../Image';
+import '/node_modules/flag-icons/css/flag-icons.min.css';
 export type CardType = 'Private' | 'public';
 interface Props {
   flag?: string;
@@ -163,7 +163,7 @@ const ItemsCard = ({
   ];
 
   return (
-    <>
+    <div>
       {cardtype === "Private" && (
         <Box sx={{ position: "relative", width: "80px" }}>
           <Box sx={{ position: "relative", width: "" }}>
@@ -322,15 +322,15 @@ const ItemsCard = ({
       <Box
         sx={{
           width: "100%",
-          // height: { xs: '200px', md: '250px' },
-          // height:
-          //   flag || createdAt
-          //     ? { xs: '145px', sm: '150px', md: '250px' }
-          //     : { xs: '130px', md: '180px' },
+          //  height: { xs: '300px', md: '350px' },
+          height:
+            flag || createdAt
+              ? { xs: '300px', md: '350px' }
+              : { xs: '130px', md: '180px' },
           bgcolor: '#FFFFFF',
           border: '1px solid #E6E9F9',
           borderRadius: '1rem',
-          // p: { xs: '0.4rem', sm: '1rem' },
+          p: { xs: '0.4rem', sm: '1rem' },
           p:
             flag || createdAt
               ? { xs: "0.4rem", sm: "1rem" }
@@ -432,7 +432,7 @@ const ItemsCard = ({
                 sx={{
                   display: "grid",
                   gridTemplateColumns: "10px 1fr",
-                  gap: "0.5rem",
+                  gap: "0.8rem",
                   alignItems: "center",
                   paddingBottom: flag || createdAt ? "8px" : "",
                 }}
@@ -448,7 +448,7 @@ const ItemsCard = ({
                     {flag && (
                       <Box
                         component={"span"}
-                        sx={{ height: "10px" }}
+                          sx={{ height: { sm: "10px" ,md:"15px"} }}
                         className={`fi fi-${flag?.toLowerCase()}`}
                       ></Box>
                     )}
@@ -461,7 +461,7 @@ const ItemsCard = ({
                     sx={{
                       ml: ".2rem",
                       fontWeight: "600",
-                      fontSize: { xs: "0.4rem", sm: ".8rem" },
+                      fontSize: {  sm: "0.8rem" ,md:"1rem"},
                       color: "black",
                     }}
                   >
@@ -518,8 +518,8 @@ const ItemsCard = ({
 
               <Box
                 sx={{
-                  width: "80x",
-                  height: "160px",
+                  width: "100x",
+                  height: { xs: "160px", md: "180px" },
                   margin: "0 auto",
 
                   mt: cardtype === "Private" ? "10px" : "unset",
@@ -541,13 +541,13 @@ const ItemsCard = ({
                     style={{
                       width: "100%",
                       height: "100%",
-                      objectFit: "fill",
+                      objectFit: "cover",
                       objectPosition: "center"
                     }}
                   />
                 )}
               </Box>
-              
+
               {isFetching ? (
                 <Skeleton
                   variant="rectangular"
@@ -561,9 +561,8 @@ const ItemsCard = ({
                     mb: "0.5rem",
                     color: "black",
                     fontSize: {
-                      xs: '7px',
-                      md: '8px',
-                      lg: '12px',
+                      md: '12px',
+                      lg: '15px',
                       wordBreak: 'break-word',
                     },
                   }}
@@ -598,7 +597,7 @@ const ItemsCard = ({
                   <Typography
                     sx={{
                       fontWeight: "700",
-                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
+                      fontSize: {md: "15px", lg: "20px" },
 
                       color: "black",
                     }}
@@ -620,7 +619,7 @@ const ItemsCard = ({
                 ) : (
                   <Typography
                     sx={{
-                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
+                      fontSize: { xs:"10px", md: "12px", lg: "14px" },
                       color:
                         dayjs().diff(createdAt, "days") > 21
                           ? "red"
@@ -631,6 +630,7 @@ const ItemsCard = ({
                 </Typography>
                 )}
               </Box>
+
             </Box>
           </Link>
         ) : (
@@ -914,14 +914,14 @@ const ItemsCard = ({
                   >
                     {createdAt ? dayjs(createdAt).format("DD.MM.YYYY") : ""}
                   </Typography>
-                 
+
                 )}
               </Box> */}
             </Box>
           </div>
         )}
       </Box>
-    </>
+    </div>
   );
 };
 

@@ -1,31 +1,25 @@
 import {
   Box,
   Button,
-  Paper,
   Typography,
-  useMediaQuery,
-  Divider,
+  useMediaQuery
 } from '@mui/material';
-import nora from 'src/assets/Image/jenny.jpg';
 import _ from 'lodash';
-import dayjs from 'dayjs';
-import { Spinner } from 'src/pages/Item';
-import avater from 'src/assets/Image/numisnest avater.jpg';
-import Image from '../Image';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import useAppContext from 'src/hooks/useAppContext';
-import { useSocket } from 'src/utilities/context/socketContext';
-import { ActionType } from 'src/utilities/context/context';
-import LINKS from 'src/utilities/links';
-import SendMessageForm from '../Modal/send-message-form';
 import { useEffect, useState } from 'react';
-import { axiosPublic } from 'src/axios/axios';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import delivery from 'src/assets/Image/Delivery.png';
 import phone from 'src/assets/Image/Phone Contact.png';
-import { toast } from 'react-toastify';
+import { axiosPublic } from 'src/axios/axios';
+import useAppContext from 'src/hooks/useAppContext';
 import useCollectorsAxiosPrivate from 'src/hooks/useCollectorsAxiosPrivate';
-import infoIcon from '../../assets/Image/info.png';
+import { Spinner } from 'src/pages/Item';
+import { ActionType } from 'src/utilities/context/context';
+import { useSocket } from 'src/utilities/context/socketContext';
+import LINKS from 'src/utilities/links';
 import { AccountVisibilityType } from 'src/utilities/types';
+import infoIcon from '../../assets/Image/info.png';
+import SendMessageForm from '../Modal/send-message-form';
 interface Props {
   firstName?: string;
   lastName?: string;
@@ -38,7 +32,7 @@ interface Props {
   country?: string;
   flag?: string;
   profiledescription?:string,isFetching:boolean
-  
+
 
 }
 
@@ -75,7 +69,7 @@ const SellerProfile = ({
       const {data} = response?.data
       console.log(data)
       setAccountVisi(data?.[0])
-      
+
     }
     getUserVisibilityType()
   },[])
@@ -93,7 +87,7 @@ const SellerProfile = ({
         } else {
           setDisplayModal(true);
         }
-        
+
         // socket.emit(
         //   "new room",
         //   { sender_id: state.user._id, receiver_id: id },
@@ -159,7 +153,7 @@ const SellerProfile = ({
     }
   };
   if (
-    
+
     !firstName ||
     !lastName ||
     !createdAt ||
@@ -277,7 +271,7 @@ const SellerProfile = ({
               sx={{
                 width: { xs: "80px", md: "110px" },
                 backgroundColor: "#0047AB",
-                color: "white",
+                color: "white !important",
                 padding: "0.5rem 2.5rem",
                 fontWeight: "400",
                 fontSize: { xs: "13px", md: "1rem" },
@@ -318,7 +312,7 @@ const SellerProfile = ({
             gap: { xs: "1rem", md: "1.6rem" },
           }}
         >
-          <Box
+          {/* <Box
             sx={{
               width: "100%",
               display: "flex",
@@ -353,7 +347,7 @@ const SellerProfile = ({
                 ></Box>
               </Typography>
             </>
-          </Box>
+          </Box> */}
 
           <Box
             sx={{
