@@ -176,13 +176,13 @@ const HomePage = () => {
       </Box>
 
       <Items
-        data={[ ...allItems]} //{...pinnedItems}
+        data={[...pinnedItems, ...allItems]} //{...pinnedItems}
         isFetching={isFetching}
         itemsWithScreen={itemsWithScreen}
       />
 
       <Sellers
-        data={[ ...allSellers]} //{...pinnedSellers}
+        data={[...pinnedSellers, ...allSellers]} //{...pinnedSellers}
         isFetching={isFetching}
         sellersWithScreen={sellersWithScreen}
       />
