@@ -1,8 +1,6 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { axiosPublic } from 'src/axios/axios';
-import ModalWrapper from 'src/components/Modal/ModalWrapper';
-import SelectComp from 'src/components/Select/SelectComp';
 import Items from 'src/components/homeComponents/Items';
 import Search from 'src/components/homeComponents/Search';
 import Sellers from 'src/components/homeComponents/Sellers';
@@ -178,13 +176,13 @@ const HomePage = () => {
       </Box>
 
       <Items
-        data={[...pinnedItems, ...allItems]}
+        data={[ ...allItems]} //{...pinnedItems}
         isFetching={isFetching}
         itemsWithScreen={itemsWithScreen}
       />
 
       <Sellers
-        data={[...pinnedSellers, ...allSellers]}
+        data={[ ...allSellers]} //{...pinnedSellers}
         isFetching={isFetching}
         sellersWithScreen={sellersWithScreen}
       />

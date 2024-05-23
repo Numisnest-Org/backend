@@ -1,34 +1,29 @@
 import {
   Box,
   Button,
-  Checkbox,
   FormControl,
-  FormControlLabel,
   FormHelperText,
   Grid,
   InputAdornment,
   MenuItem,
   Paper,
-  Radio,
-  RadioGroup,
   Select,
   SelectChangeEvent,
   Typography,
-  useTheme,
+  useTheme
 } from "@mui/material";
-import { ChangeEvent, FC, useState } from "react";
-import TextInput from "../form-components/textInput";
-import { CheckBox } from "@mui/icons-material";
+import { Formik, FormikHelpers } from "formik";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { axiosPublic } from "src/axios/axios";
+import useCountryName from "src/hooks/useCountryName";
+import { countries } from "src/utilities/constants/countries";
 import LINKS from "src/utilities/links";
 import { FormValueRegister } from "src/utilities/types";
-import { Formik, FormikHelpers, useFormikContext } from "formik";
 import * as yup from "yup";
-import { axiosPublic } from "src/axios/axios";
-import { toast } from "react-toastify";
-import useCountryName from "src/hooks/useCountryName";
 import TextFieldInputLimit from "../form-components/TextFieldInputLimit";
-import { countries } from "src/utilities/constants/countries";
+import TextInput from "../form-components/textInput";
 
 export enum RegisterType {
   Collector = "collector",
@@ -172,7 +167,7 @@ const RegisterForm = ({ type }: Props) => {
     }
   };
 
-  
+
   const handleFormSubmit = async (
     values: FormValueRegister,
     onSubmitProps: FormikHelpers<FormValueRegister>
@@ -250,10 +245,9 @@ const RegisterForm = ({ type }: Props) => {
             }}
           >
             <Box sx={{ mt: "1.5rem" }}>
-              <Box component={"label"}>First Name</Box>
+              <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>First Name</Box>
               <TextInput
                 fullWidth
-                variant={"standard"}
                 placeholder={"Enter First Name "}
                 name="first_name"
                 value={values.first_name}
@@ -266,10 +260,9 @@ const RegisterForm = ({ type }: Props) => {
               />
             </Box>
             <Box sx={{ mt: "1.5rem" }}>
-              <Box component={"label"}>Last Name</Box>
+              <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Last Name</Box>
               <TextInput
                 fullWidth
-                variant={"standard"}
                 placeholder={"Enter Last Name"}
                 name="last_name"
                 value={values.last_name}
@@ -294,13 +287,12 @@ const RegisterForm = ({ type }: Props) => {
             }}
           >
             <Box sx={{ mt: "1.5rem" }}>
-              <Box component={"label"}>Country</Box>
+              <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Country</Box>
               <FormControl
                 fullWidth
                 error={Boolean(touched.country && errors.country)}
               >
                 <Select
-                  variant={"standard"}
                   fullWidth
                   name="country"
                   value={values.country}
@@ -321,10 +313,9 @@ const RegisterForm = ({ type }: Props) => {
               </FormControl>
             </Box>
             <Box sx={{ mt: "1.5rem" }}>
-              <Box component={"label"}>Mobile</Box>
+              <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Mobile</Box>
               <TextInput
                 fullWidth
-                variant={"standard"}
                 placeholder={"enter Phonenumber"}
                 name="mobile"
                 value={values.mobile}
@@ -356,10 +347,9 @@ const RegisterForm = ({ type }: Props) => {
           </Grid>
 
           <Box sx={{ mt: "1.5rem" }}>
-            <Box component={"label"}>Email</Box>
+            <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Email</Box>
             <TextInput
               fullWidth
-              variant={"standard"}
               placeholder={"Enter Email"}
               name="email"
               value={values.email}
@@ -371,10 +361,9 @@ const RegisterForm = ({ type }: Props) => {
           </Box>
 
           <Box sx={{ mt: "1.5rem" }}>
-            <Box component={"label"}>Password</Box>
+            <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Password</Box>
             <TextInput
               fullWidth
-              variant={"standard"}
               placeholder={"Enter password"}
               name="password"
               value={values.password}
@@ -385,10 +374,9 @@ const RegisterForm = ({ type }: Props) => {
             />
           </Box>
           <Box sx={{ mt: "1.5rem" }}>
-            <Box component={"label"}>Confirm Password</Box>
+            <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Confirm Password</Box>
             <TextInput
               fullWidth
-              variant={"standard"}
               placeholder={"Confirm you password"}
               name="cpassword"
               value={values.cpassword}
@@ -399,13 +387,14 @@ const RegisterForm = ({ type }: Props) => {
             />
           </Box>
           <Box sx={{ mt: "1.5rem" }}>
-            <Box component={"label"}>About</Box>
+            <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>About</Box>
             <TextFieldInputLimit
               limit={50}
-              multiline
+              rows={5}
+              // multiline
               val={values.about}
+              variant="outlined"
               placeholder="Tell us about you and what you are collecting"
-              sx={{ mt: "-2.5rem" }}
               onBlur={handleBlur}
               onChange={(event) => {
                 handleChange({
