@@ -1,13 +1,12 @@
 import { Box, useMediaQuery } from "@mui/material";
 
-import Image from "src/components/Image";
+import { useNavigate } from "react-router-dom";
 import eclipse from "src/assets/Image/Ellipse 1949.png";
 import eclipse2 from "src/assets/Image/Ellipse2.png";
 import logo from "src/assets/Image/Logo.png";
-import { useNavigate } from "react-router-dom";
-import LINKS from "src/utilities/links";
-import loginimg from "src/assets/Image/loginimg.png";
+import Image from "src/components/Image";
 import RegisterForm, { RegisterType } from "src/components/forms/register-form";
+import LINKS from "src/utilities/links";
 const CollectorRegisterPage = () => {
   const isNotMobileScreens = useMediaQuery("(min-width:900px)");
   const navigate = useNavigate()
@@ -49,7 +48,7 @@ const CollectorRegisterPage = () => {
           zIndex: -1,
         }}
       />
-      <Box>
+      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <Box component={"div"} onClick={() => navigate(LINKS.Home)}>
           <Image
             src={logo}

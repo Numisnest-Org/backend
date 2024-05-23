@@ -82,7 +82,6 @@ const registerSchemaSeller = yup.object().shape({
 const RegisterForm = ({ type }: Props) => {
   const theme = useTheme();
   const navigate = useNavigate()
-  const blue = theme.palette.primary.light;
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const countryNames = useCountryName();
   const [selectedCountryCode, setSelectedCountryCode] = useState<
@@ -199,8 +198,6 @@ const RegisterForm = ({ type }: Props) => {
         handleBlur,
         handleChange,
         handleSubmit,
-        setFieldValue,
-        resetForm,
       }) => (
         <Paper
           sx={{
@@ -209,10 +206,8 @@ const RegisterForm = ({ type }: Props) => {
             px: {
               xs: "1rem",
               sm: "2rem",
-              md: "3rem",
-              lg: "3.5rem",
-              xl: "4rem",
             },
+            maxWidth: "750px",
           }}
           onSubmit={handleSubmit}
           component={"form"}
@@ -316,7 +311,7 @@ const RegisterForm = ({ type }: Props) => {
               <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Mobile</Box>
               <TextInput
                 fullWidth
-                placeholder={"enter Phonenumber"}
+                placeholder={"Enter Phone Number"}
                 name="mobile"
                 value={values.mobile}
                 onChange={handleChange}
@@ -360,11 +355,25 @@ const RegisterForm = ({ type }: Props) => {
             />
           </Box>
 
+          <Grid
+            sx={{
+              display: "grid",
+              mt: "1.5rem",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2, 1fr)",
+                lg: "repeat(2, 1fr)",
+                xl: "",
+              },
+              columnGap: { xs: "1rem", lg: "1.5rem", xl: "2rem" },
+            }}
+          >
           <Box sx={{ mt: "1.5rem" }}>
             <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Password</Box>
             <TextInput
               fullWidth
-              placeholder={"Enter password"}
+              type="password"
+              placeholder={"Enter Password"}
               name="password"
               value={values.password}
               onChange={handleChange}
@@ -377,7 +386,8 @@ const RegisterForm = ({ type }: Props) => {
             <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>Confirm Password</Box>
             <TextInput
               fullWidth
-              placeholder={"Confirm you password"}
+              type="password"
+              placeholder={"Confirm your Password"}
               name="cpassword"
               value={values.cpassword}
               onChange={handleChange}
@@ -386,12 +396,14 @@ const RegisterForm = ({ type }: Props) => {
               helperText={touched.cpassword && errors.cpassword}
             />
           </Box>
+          </Grid>
+
           <Box sx={{ mt: "1.5rem" }}>
             <Box component={"label"} sx={{ color: '#343434', fontWeight: '500' }}>About</Box>
             <TextFieldInputLimit
               limit={50}
               rows={5}
-              // multiline
+              multiline
               val={values.about}
               variant="outlined"
               placeholder="Tell us about you and what you are collecting"
@@ -438,11 +450,14 @@ const RegisterForm = ({ type }: Props) => {
           <Button
             fullWidth
             sx={{
-              bgcolor: "#0047AB",
-              color: "white",
-              fontSize: "1.5rem",
-              borderRadius: "1rem",
-              mt: "1.5rem",
+              bgcolor: '#0047AB',
+              color: 'white',
+              fontSize: '1.2rem',
+              borderRadius: '1rem',
+              mt: '1.5rem',
+              '&:hover': {
+                backgroundColor: '#1166dc ', // Change hover background color
+              },
             }}
             type="submit"
           >
