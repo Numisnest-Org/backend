@@ -140,7 +140,6 @@ const HomePage = () => {
     fetchAvailableCountries();
   }, []);
 
-  console.log(pinnedItems);
   return (
     <VisitorLayout>
       {/* <Box

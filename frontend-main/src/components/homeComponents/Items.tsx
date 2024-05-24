@@ -21,7 +21,7 @@ const Items = ({
           gridTemplateColumns: {
             xs: 'repeat(2, 1fr)',
             md: 'repeat(4, 1fr)',
-            lg: 'repeat(4, 1fr)',
+            lg: 'repeat(6, 1fr)',
           },
           gap: { xs: '0.6rem', sm: '1rem' },
           position: 'relative',
