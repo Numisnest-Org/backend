@@ -1,17 +1,16 @@
-import { Box, useMediaQuery } from "@mui/material";
+import { Box } from "@mui/material";
 
-import Image from "src/components/Image";
+import { useNavigate } from "react-router-dom";
 import eclipse from "src/assets/Image/Ellipse 1949.png";
 import eclipse2 from "src/assets/Image/Ellipse2.png";
 import logo from "src/assets/Image/Logo.png";
+import Image from "src/components/Image";
 import RegisterForm, { RegisterType } from "src/components/forms/register-form";
-import useAppContext from "src/hooks/useAppContext";
-import { useNavigate } from "react-router-dom";
 import LINKS from "src/utilities/links";
 const SellerRegisterPage = () => {
-   const { state } = useAppContext();
+  //  const { state } = useAppContext();
    const navigate = useNavigate()
-  const isNotMobileScreens = useMediaQuery("(min-width:900px)");
+  // const isNotMobileScreens = useMediaQuery("(min-width:900px)");
   return (
     <Box
       sx={{

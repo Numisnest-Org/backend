@@ -94,7 +94,9 @@ const ItemsCard = ({
         }
       );
       typeof setRefresh !== 'undefined' && setRefresh((prev: boolean) => !prev);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const EditItem = () => {
@@ -330,7 +332,7 @@ const ItemsCard = ({
           bgcolor: '#FFFFFF',
           border: '1px solid #E6E9F9',
           borderRadius: '1rem',
-          p: { xs: '0.4rem', sm: '1rem' },
+          // p: { xs: '0.4rem', sm: '1rem' },
           p:
             flag || createdAt
               ? { xs: "0.4rem", sm: "1rem" }

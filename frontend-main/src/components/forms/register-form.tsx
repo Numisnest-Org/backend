@@ -95,6 +95,7 @@ const RegisterForm = ({ type }: Props) => {
     console.log(countryCode?.phone_code);
     setSelectedCountryCode(countryCode?.phone_code || "");
   };
+
   const sellerRegister = async (values: FormValueRegister) => {
     try {
       values.country_code = selectedCountryCode;

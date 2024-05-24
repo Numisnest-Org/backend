@@ -1,31 +1,25 @@
 import {
+  ReportProblemRounded
+} from '@mui/icons-material';
+import {
   Box,
   Button,
   Divider,
-  Paper,
   Typography,
-  useMediaQuery,
+  useMediaQuery
 } from '@mui/material';
-import React, { useState } from 'react';
-import { AddIcon } from '../Icons/icons';
-import {
-  GroupItems,
-  SellerItemType,
-  SingleItemType,
-} from 'src/utilities/types';
-import ItemsCard from '../cards/ItemsCard';
-import EditItemsModal from '../Modal/edit-ItemsModal';
-import {
-  ArrowForwardIosOutlined,
-  ReportProblemRounded,
-  Sledding,
-} from '@mui/icons-material';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import LINKS from 'src/utilities/links';
-import { dark } from '@mui/material/styles/createPalette';
-import ConfirmationModal from '../Modal/are-you-sure';
 import { toast } from 'react-toastify';
 import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
+import LINKS from 'src/utilities/links';
+import {
+  GroupItems
+} from 'src/utilities/types';
+import { AddIcon } from '../Icons/icons';
+import ConfirmationModal from '../Modal/are-you-sure';
+import EditItemsModal from '../Modal/edit-ItemsModal';
+import ItemsCard from '../cards/ItemsCard';
 
 interface Props {
   data?: GroupItems[] | null;
@@ -211,8 +205,8 @@ const SellerProfileIItems = ({ data, refresh, setRefresh }: Props) => {
               height: "100%",
             }}
           >
-            {data?.slice(0, 24)?.map((itemm: any, indexx: number) => (
-              <Box key={indexx} sx={{ width: "100%", height: "100%" }}>
+            {data?.slice(0, 24)?.map((itemm: any, index: number) => (
+              <Box key={index} sx={{ width: "100%", height: "100%" }}>
                 <ItemsCard
                   key={indexx}
                   url={itemm.photos?.[0].secure_url}

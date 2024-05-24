@@ -1,4 +1,3 @@
-import { DataArray, RepeatOnSharp, UndoOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosPublic } from "src/axios/axios";
@@ -6,16 +5,14 @@ import Collections from "src/components/Profilecomponents/Collections";
 import Featured from "src/components/Profilecomponents/Featured";
 import SellerProfile from "src/components/Profilecomponents/SellerProfile";
 import ItemsProfile from "src/components/Profilecomponents/items";
-import Items from "src/components/homeComponents/Items";
 import VisitorLayout from "src/components/layouts/VisitorLayout";
 import useAxiosPrivate from "src/hooks/useAxiosPrivate";
 import useScrollToTop from "src/hooks/useScrolllToTop";
-import { defaultItems, defaultSellerItems } from "src/utilities/constants";
+import { defaultSellerItems } from "src/utilities/constants";
 import {
   CollectionType,
-  ItemType,
   SellerItemType,
-  SingleSeller,
+  SingleSeller
 } from "src/utilities/types";
 
 const SellerPage = () => {
@@ -27,9 +24,10 @@ const SellerPage = () => {
     CollectionType[] | undefined
   >(undefined);
   const [featuredItems, setFeaturedItems] = useState<any[] | undefined>();
-  const [isFetching,setIsFetching]= useState<boolean>(true)
+  const [isFetching, setIsFetching] = useState<boolean>(true);
   const axiosPrivate = useAxiosPrivate();
   useScrollToTop();
+
   useEffect(() => {
     const fetchSellerPageData = async () => {
       try {
@@ -60,12 +58,15 @@ const SellerPage = () => {
         );
         const { data } = response.data;
 
-        setSellerItem;
-        data;
-      } catch (error) {}finally{
-        setIsFetching(false)
+        setSellerItem(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsFetching(false);
       }
     };
+
     const fetchSingleSellerCollections = async () => {
       try {
         const response = await axiosPublic.get(
@@ -73,13 +74,16 @@ const SellerPage = () => {
         );
         const { data } = response.data;
         setSellerCollection(data);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchSellerPageData();
     fetchSellerProfile();
     fetchSellerItems();
     fetchSingleSellerCollections();
-  }, []);
+  }, [id]);
+
   return (
     <VisitorLayout>
       <SellerProfile
@@ -97,6 +101,12 @@ const SellerPage = () => {
         isFetching={isFetching}
       />
       <Featured data={featuredItems} />
+
+      <Collections
+        sellerCollectionData={sellerCollection}
+        sellerId={data?._id}
+        sellerFirstname={data?.first_name}
+      />
       <Collections
         sellerCollectionData={sellerCollection}
         sellerId={data?._id}

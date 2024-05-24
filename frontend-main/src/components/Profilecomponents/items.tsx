@@ -1,18 +1,27 @@
-import { Box, Divider, Paper, Typography, useMediaQuery } from '@mui/material';
-import { ItemType, SellerItemType, item } from 'src/utilities/types';
-import { defaultItems } from 'src/utilities/constants';
-import ItemsCard from '../cards/ItemsCard';
+import { Box, Divider, Typography, useMediaQuery } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowForwardIosOutlined } from '@mui/icons-material';
 import LINKS from 'src/utilities/links';
+import { SellerItemType } from 'src/utilities/types';
+import ItemsCard from '../cards/ItemsCard';
 
 interface Props {
   data?: any;
   sellerId?: string;
 }
-const ItemsProfile = ({ data, sellerId }: Props) => {
+
+const ItemsProfile = ({ data: initialData, sellerId }: Props) => {
+  const [data, setData] = useState(initialData);
   const navigate = useNavigate();
   const isNotMobileScreens = useMediaQuery('(min-width:600px)');
+
+  useEffect(() => {
+    if (!initialData) {
+      return
+    }
+  }, [initialData]);
+
+  // console.log('Data:', data);
 
   return (
     <Box>

@@ -1,27 +1,21 @@
 import {
   Box,
   Button,
-  Paper,
-  Divider,
   Typography,
-  useMediaQuery,
+  useMediaQuery
 } from '@mui/material';
-import dayjs, { Dayjs } from 'dayjs';
 import _ from 'lodash';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import LINKS from 'src/utilities/links';
 import delivery from 'src/assets/Image/Delivery.png';
 import phone from 'src/assets/Image/Phone Contact.png';
-import settings from 'src/assets/Image/setting.png';
-import padlock from 'src/assets/Image/padlock.png';
-import deleteK from 'src/assets/Image/delete.png';
-import eyes from 'src/assets/Image/eyes.png';
 import personIcon from 'src/assets/Image/contact.svg';
+import eyes from 'src/assets/Image/eyes.png';
 import loveIcon from 'src/assets/Image/love.png';
-import sellerIcon from 'src/assets/Image/seller.png';
+import padlock from 'src/assets/Image/padlock.png';
+import settings from 'src/assets/Image/setting.png';
 import vIcon from 'src/assets/Image/visibility.png';
-import { useState } from 'react';
-import cardPhoneIcon from '../../assets/Image/contact.png';
+import LINKS from 'src/utilities/links';
 import infoIcon from '../../assets/Image/info.png';
 
 interface Props {
@@ -273,7 +267,7 @@ const SellerDashboard = ({
               gap: { xs: "1rem", md: "1.6rem" },
             }}
           >
-            <Box
+            {/* <Box
               sx={{
                 width: "100%",
                 display: "flex",
@@ -305,10 +299,12 @@ const SellerDashboard = ({
                       marginTop: "10px",
                       backgroundColor: "#69696999",
                     }}
-                  ></Box>
+                  >
+
+                  </Box>
                 </Typography>
               </>
-            </Box>
+            </Box> */}
             <Box
               sx={{
                 width: "100%",
@@ -382,7 +378,7 @@ const SellerDashboard = ({
                     wordWrap: "break-word",
                   }}
                 >
-                  Profile Details {profileDescription} 
+                  Profile Details {profileDescription}
                   <Box
                     sx={{
                       width: { xs: "20%", md: "10%" },

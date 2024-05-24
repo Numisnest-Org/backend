@@ -1,9 +1,8 @@
-import { Box } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import SellerCollection from 'src/components/SellerProfileComponents/SellerCollection';
+import { useEffect, useState } from 'react';
+import SellerCollection from "src/components/SellerProfileComponents/SellerCollection";
 import SellerDashboard from 'src/components/SellerProfileComponents/SellerDashboard';
 import SellerFeatured from 'src/components/SellerProfileComponents/SellerFeatured';
-import SellerProfileItems from 'src/components/SellerProfileComponents/SellerProfileIItems';
+import SellerProfileIItems from "src/components/SellerProfileComponents/SellerProfileIItems";
 import VisitorLayout from 'src/components/layouts/VisitorLayout';
 import useAppContext from 'src/hooks/useAppContext';
 import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
@@ -12,8 +11,7 @@ import { useSocket } from 'src/utilities/context/socketContext';
 import {
   CollectionType,
   GroupItems,
-  SellerProfileType,
-  SingleItemType,
+  SellerProfileType
 } from 'src/utilities/types';
 
 const SellerProfile = () => {
@@ -47,7 +45,7 @@ const SellerProfile = () => {
     return () => {
       socket.off('user online status');
     };
-  }, [socket]);
+  }, [dispatch, onlineUsers, socket]);
   useEffect(() => {
     const fetchSellerProfile = async () => {
       try {
@@ -68,8 +66,13 @@ const SellerProfile = () => {
         setProfileData(sellerProfile);
         setSellerProfileCollections(profileCollection);
         setSellerProfileItems(profileItems.items);
-      } catch (error) {}
+
+        console.log(sellerCollectionReponse)
+      } catch (error) {
+        throw Error;
+      }
     };
+
     fetchSellerProfile();
   }, [refresh]);
 
@@ -93,7 +96,7 @@ const SellerProfile = () => {
         data={sellerProfileCollections}
         sellerId={profileData?._id}
       />
-      <SellerProfileItems
+      <SellerProfileIItems
         data={sellerProfileItems}
         setRefresh={setRefresh}
         refresh={refresh}

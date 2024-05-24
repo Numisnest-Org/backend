@@ -1,18 +1,14 @@
 import { Box, Button, Typography } from '@mui/material';
 
-import { SingleItemType } from 'src/utilities/types';
-import { CustomSwitch } from '../AddItemsComponents/toggleISwitch';
 import { useState } from 'react';
-import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
-import { CardType } from './ItemsCard';
-import humanIcon from '../../assets/Image/setting.png';
-import rotateIcon from '../../assets/Image/rotate.png';
-import editIcon from '../../assets/Image/edit.png';
-import closeIcon from '../../assets/Image/close.png';
-import eyesIcon from '../../assets/Image/eyes.png';
-import deleteIcon from '../../assets/Image/delete.png';
 import { useNavigate } from 'react-router-dom';
+import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
 import LINKS from 'src/utilities/links';
+import { SingleItemType } from 'src/utilities/types';
+import editIcon from '../../assets/Image/edit.png';
+import rotateIcon from '../../assets/Image/rotate.png';
+import humanIcon from '../../assets/Image/setting.png';
+import { CardType } from './ItemsCard';
 interface Props {
   collectionName: string;
   collectionItems: Partial<SingleItemType>[];
@@ -60,7 +56,6 @@ const Collectionscard = ({
       console.log(error);
     }
   };
-  console.log(collectionItems);
   const editCollection = [
     {
       title: 'Add Items',
@@ -214,7 +209,8 @@ const Collectionscard = ({
             key={index}
             sx={{
               width: { xs: '4.5rem', lg: '5rem', xl: '6rem' },
-              aspectRatio: '1',
+              position: 'relative',
+              paddingBottom: '100%',
               border: { xs: '1px solid #fff', md: '2px solid #fff' },
               // backgroundImage: `url(${image})`,
               backgroundSize: 'cover',
@@ -226,18 +222,19 @@ const Collectionscard = ({
             <img
               src={image}
               style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
                 width: '100%',
                 height: '100%',
-                paddingTop: '10px',
-                paddingBottom: '10px',
-                paddingRight: '5px',
-                paddingLeft: '5px',
+                padding: '0.2rem',
               }}
               alt=""
             />
           </Box>
         ))}
       </Box>
+
       <Typography
         sx={{
           textAlign: 'center',
