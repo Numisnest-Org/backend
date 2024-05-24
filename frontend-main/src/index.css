@@ -426,3 +426,16 @@ input:not(:checked) + .smallsliderclone + .slider-text-inclone::before {
   padding-block: 12px !important;
   left: 0 !important;
 }
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+.line-clamp-2 {
+  -webkit-line-clamp: 2;
+}
+.line-clamp-3 {
+  -webkit-line-clamp: 3;
+}

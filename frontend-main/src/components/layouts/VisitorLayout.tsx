@@ -24,7 +24,7 @@ const VisitorLayout = ({ children }: Props) => {
             sm: '1rem',
           },
           width: '100%',
-          maxWidth: '1400px',
+          maxWidth: '1500px',
           margin: '0 auto',
         }}
       >

@@ -164,6 +164,8 @@ const ItemsCard = ({
     },
   ];
 
+  console.log(cardtype, flag, createdAt, featured);
+
   return (
     <div>
       {cardtype === "Private" && (
@@ -246,89 +248,17 @@ const ItemsCard = ({
               </ul>
             )}
           </Box>
-          {/*
-              <Button
-                sx={{
-                  position: 'absolute',
-                  bottom: 70,
-                  left: 0,
-                  display: 'inline-flex',
-                  backgroundColor: '#0047AB',
-                  color: '#F9FAFA',
-                  paddingY: '0.1rem',
-                  fontSize: '0.7rem',
-                }}
-                onClick={async (e) => {
-                  try {
-                    e.stopPropagation();
-                    // typeof openModal !== "undefined" && openModal();
-                    // setItemId ? setItemId(id) : "";
-                    const response = await axiosPrivate.put(
-                      `seller/update-item/${id}`,
-                      { name: '' },
-                      {
-                        headers: {
-                          'Content-Type': 'multipart/form-data',
-                        },
-                      }
-                    );
-                    typeof setRefresh !== 'undefined' &&
-                      setRefresh((prev: boolean) => !prev);
-                  } catch (error) {}
-                }}
-              >
-                Update
-              </Button>
-              <Button
-                sx={{
-                  position: 'absolute',
-                  top: 10,
-                  right: 0,
-                  display: 'inline-flex',
-                  backgroundColor: '#0047AB',
-                  color: '#F9FAFA',
-                  paddingY: '0.1rem',
-                  fontSize: '0.7rem',
-                }}
-                onClick={async (e) => {
-                  e.stopPropagation();
-                  typeof openDeleteModal !== 'undefined' && openDeleteModal();
-                  setItemId ? setItemId(id) : '';
-                  // await axiosPrivate.delete(`seller/delete-item/${id}`);
-                  // typeof setRefresh !== "undefined" &&
-                  //   setRefresh((prev: boolean) => !prev);
-                }}
-              >
-                Delete
-              </Button>
-              {remCollection && (
-                <Button
-                  sx={{
-                    position: 'absolute',
-                    top: 100,
-                    right: 30,
-                    display: 'inline-flex',
-                    backgroundColor: '#0047AB',
-                    color: '#F9FAFA',
-                    paddingY: '0.1rem',
-                    fontSize: '0.7rem',
-                  }}
-                  onClick={remCollection}
-                >
-                  remove from Collection
-                </Button>
-              )} */}
         </Box>
       )}
 
       <Box
         sx={{
           width: "100%",
-          //  height: { xs: '300px', md: '350px' },
           height:
             (flag || createdAt)
               ? { xs: '300px', md: '350px' }
               : { xs: '130px', md: '180px' },
+          maxHeight: "400px",
           bgcolor: '#FFFFFF',
           border: '1px solid #E6E9F9',
           borderRadius: '1rem',
@@ -348,11 +278,13 @@ const ItemsCard = ({
         {id ? (
           <Link
             to={id ? `/item/${id}` : ""}
-            style={{ textDecoration: "none", color: PRIMARY_COLOR }}
+            style={{ textDecoration: "none", color: PRIMARY_COLOR, height:"100%", display:"block" }}
           >
             <Box
               sx={{
                 height: "100%",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               {featured && (
@@ -465,7 +397,8 @@ const ItemsCard = ({
                       fontWeight: "600",
                       fontSize: {  sm: "0.8rem" ,md:"1rem"},
                       color: "black",
-                    }}
+                      }}
+                      className="line-clamp"
                   >
                     {isMobile && firstName ? (
                       <span>
@@ -521,10 +454,15 @@ const ItemsCard = ({
               <Box
                 sx={{
                   width: "100x",
-                  height: { xs: "160px", md: "180px" },
                   margin: "0 auto",
-
+                  height: "200px",
                   mt: cardtype === "Private" ? "10px" : "unset",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  position: "relative",
+                  overflow: "hidden"
+
                 }}
               >
                 {isFetching ? (
@@ -541,10 +479,13 @@ const ItemsCard = ({
                     src={url}
                     alt="item-image"
                     style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center"
+                      maxWidth: "100%",
+                      // objectFit: "cover",
+                      maxHeight: "100%",
+                      height: "auto",
+                      // objectPosition: "center",
+                      display: "block",
+                      margin: "auto",
                     }}
                   />
                 )}
@@ -564,10 +505,11 @@ const ItemsCard = ({
                     color: "black",
                     fontSize: {
                       md: '12px',
-                      lg: '15px',
+                      lg: '14px',
                       wordBreak: 'break-word',
-                    },
-                  }}
+                      }                   
+                    }}
+                    className="line-clamp line-clamp-2"
                 >
                   {isMobile && selling && selling.length > 40
                     ? `${selling.slice(0, 37)}...`
@@ -583,7 +525,6 @@ const ItemsCard = ({
                   justifyContent: "space-between",
 
                   alignItems: { xs: "start", sm: "center" },
-                  position: "absolute",
                   left: { xs: "9px", md: "14px" },
                   right: { xs: "9px", md: "14px" },
                   bottom: "6px",
@@ -717,208 +658,6 @@ const ItemsCard = ({
                 </Button>
               )}
 
-              {/* <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  paddingBottom: flag || createdAt ? "20px" : "",
-                }}
-              >
-                {isFetching ? (
-                  <Skeleton
-                    width="1.2rem"
-                    height="1.2rem"
-                    variant="circular"
-                  ></Skeleton>
-                ) : (
-                  <>
-                    {flag && (
-                      <Box
-                        component={"span"}
-                        sx={{ height: "10px" }}
-                        className={`fi fi-${flag?.toLowerCase()}`}
-                      ></Box>
-                    )}
-                  </>
-                )}
-                {isFetching ? (
-                  <Skeleton width={"40%"} component="h2"></Skeleton>
-                ) : (
-                  <Typography
-                    sx={{
-                      ml: ".5rem",
-                      fontWeight: "600",
-                      fontSize: { xs: "0.5rem", sm: "1rem" },
-                      color: "black",
-                    }}
-                  >
-                    {isMobile && firstName ? (
-                      <span>
-                        {`${textFromat(_.upperFirst(firstName))} ${textFromat(
-                          _.upperFirst(lastName)
-                        )}`.length > 18 ? (
-                          <>
-                            {`${textFromat(
-                              _.upperFirst(firstName)
-                            )} ${textFromat(_.upperFirst(lastName))}`.slice(
-                              0,
-                              16
-                            )}
-                            ..
-                          </>
-                        ) : (
-                          `${textFromat(_.upperFirst(firstName))} ${textFromat(
-                            _.upperFirst(lastName)
-                          )}`
-                        )}
-                      </span>
-                    ) : (
-                      ""
-                    )}
-
-                    {!isMobile && firstName ? (
-                      <span>
-                        {`${textFromat(_.upperFirst(firstName))} ${textFromat(
-                          _.upperFirst(lastName)
-                        )}`.length > 22 ? (
-                          <>
-                            {`${textFromat(
-                              _.upperFirst(firstName)
-                            )} ${textFromat(_.upperFirst(lastName))}`.slice(
-                              0,
-                              20
-                            )}
-                            ..
-                          </>
-                        ) : (
-                          `${textFromat(_.upperFirst(firstName))} ${textFromat(
-                            _.upperFirst(lastName)
-                          )}`
-                        )}
-                      </span>
-                    ) : (
-                      ""
-                    )}
-                  </Typography>
-                )}
-              </Box>
-
-              <Box
-                sx={{
-                  width: "80x",
-                  height: { xs: "60px", md: "100px" },
-                  margin: "0 auto",
-
-                  mt: cardtype === "Private" ? "10px" : "unset",
-                }}
-              >
-                {isFetching ? (
-                  <Skeleton
-                    sx={{
-                      width: "3rem",
-                      height: "4rem",
-                      mt: "1rem",
-                      borderRadius: "0.3rem",
-                    }}
-                  ></Skeleton>
-                ) : (
-                  <img
-                    src={url}
-                    alt="item-image"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "fill",
-                    }}
-                  />
-                )}
-              </Box>
-              {isFetching ? (
-                <Skeleton
-                  variant="rectangular"
-                  component={"h6"}
-                  sx={{ mt: "0.5rem" }}
-                ></Skeleton>
-              ) : (
-                <Typography
-                  sx={{
-                    mt: "0.5rem",
-                    mb: "0.5rem",
-                    color: "black",
-                    fontSize: {
-                      xs: "6px",
-                      md: "8px",
-                      lg: "9px",
-                      wordBreak: "break-word",
-                    },
-                  }}
-                >
-                  {isMobile && selling && selling.length > 40
-                    ? `${selling.slice(0, 37)}...`
-                    : selling}
-                  {!isMobile && selling && selling.length > 50
-                    ? `${selling.slice(0, 47)}...`
-                    : selling}
-                </Typography>
-              )}
-
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-
-                  alignItems: { xs: "start", sm: "center" },
-                  position: "absolute",
-                  left: { xs: "9px", md: "14px" },
-                  right: { xs: "9px", md: "14px" },
-                  bottom: "6px",
-                  gap: "0.5rem",
-                }}
-              >
-                {isFetching ? (
-                  <Skeleton
-                    variant="rectangular"
-                    component={"h3"}
-                    sx={{ mt: "0.5rem", width: "40%" }}
-                  ></Skeleton>
-                ) : (
-                   <Typography
-                    sx={{
-                      fontWeight: "700",
-                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
-
-                      color: "black",
-                    }}
-                  >
-                    {`${
-                      amount?.toLocaleString(undefined, {
-                        maximumFractionDigits: 2,
-                        minimumFractionDigits: 2,
-                      }) || "0.00"
-                    } ${currency?.toUpperCase()}`}
-                  </Typography>
-                )}
-
-                {isFetching ? (
-                  <Skeleton
-                    variant="rectangular"
-                    sx={{ mt: "0.5rem", width: "30%" }}
-                  ></Skeleton>
-                  ) : (
-                      <Typography
-                    sx={{
-                      fontSize: { xs: "6px", md: "7px", lg: "10px" },
-                      color:
-                        dayjs().diff(createdAt, "days") > 21
-                          ? "red"
-                          : "#0047AB",
-                    }}
-                  >
-                    {createdAt ? dayjs(createdAt).format("DD.MM.YYYY") : ""}
-                  </Typography>
-
-                )}
-              </Box> */}
             </Box>
           </div>
         )}
