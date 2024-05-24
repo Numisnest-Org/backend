@@ -37,7 +37,7 @@ const Featured = ({ data }: Props) => {
             bgcolor: "hsla(215, 100%, 92%, 1)",
             boxShadow: "1px 2px 2px #0000",
             borderRadius: "4px",
-            overflow: { xs: "scroll", lg: "unset" },
+            overflow: { xs: "auto", lg: "unset" },
           }}
         >
           {data?.featured_items?.[0] ? (
@@ -45,7 +45,7 @@ const Featured = ({ data }: Props) => {
               sx={{
                 display: "grid",
                 gridTemplateColumns: {
-                  xs: "repeat(6, 130px)",
+                  xs: "repeat(6, 200px)",
                   md: "repeat(6, 1fr)",
                 },
                 gap: { xs: "0.6rem", sm: "1rem", md: "2rem" },

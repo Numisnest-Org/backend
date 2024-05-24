@@ -189,13 +189,6 @@ const Itemdisplay2 = ({
           gap: '1.2rem',
         }}
       >
-        {/* <SimpleBar
-          style={{
-            width: `${isMobile ? '100%' : '110px'}`,
-            // height: isNotMobileScreens ? '121px' : '100px',
-            // width: isNotMobileScreens ? '100px' : '121px',
-          }}
-        > */}
         <Box
           sx={{
             width: isMobile ? '100%' : 'unset',
@@ -326,7 +319,6 @@ const Itemdisplay2 = ({
             </IconButton>
           )}
 
-          <AnimatePresence>
             {isVideo(arr[activepic]?.secure_url) ? (
               <motion.video
                 key={activepic}
@@ -363,10 +355,9 @@ const Itemdisplay2 = ({
                 }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.3 }}
               />
             )}
-          </AnimatePresence>
         </Box>
       </Box>
     </Box>

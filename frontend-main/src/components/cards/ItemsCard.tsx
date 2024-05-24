@@ -372,94 +372,97 @@ const ItemsCard = ({
                 </Button>
               )}
 
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: "10px 1fr",
-                  gap: "0.8rem",
-                  alignItems: "center",
-                  paddingBottom: flag || createdAt ? "8px" : "",
-                }}
-              >
-                {isFetching ? (
-                  <Skeleton
-                    width="1.2rem"
-                    height="1.2rem"
-                    variant="circular"
-                  ></Skeleton>
-                ) : (
-                  <>
-                    {flag && (
-                      <Box
-                        component={"span"}
-                          sx={{ height: { sm: "10px" ,md:"15px"} }}
-                        className={`fi fi-${flag?.toLowerCase()}`}
-                      ></Box>
-                    )}
-                  </>
-                )}
-                {isFetching ? (
-                  <Skeleton width={"40%"} component="h2"></Skeleton>
-                ) : (
-                  <Typography
+              {
+                (firstName && !isFetching) &&
+                  <Box
                     sx={{
-                      ml: ".2rem",
-                      fontWeight: "600",
-                      fontSize: {  sm: "0.8rem" ,md:"1rem"},
-                      color: "black",
-                      }}
-                      className="line-clamp"
+                      display: "grid",
+                      gridTemplateColumns: "10px 1fr",
+                      gap: "0.8rem",
+                      alignItems: "center",
+                      paddingBottom: flag || createdAt ? "8px" : "",
+                    }}
                   >
-                    {isMobile && firstName ? (
-                      <span>
-                        {`${textFromat(_.upperFirst(firstName))} ${textFromat(
-                          _.upperFirst(lastName)
-                        )}`.length > 18 ? (
-                          <>
-                            {`${textFromat(
-                              _.upperFirst(firstName)
-                            )} ${textFromat(_.upperFirst(lastName))}`.slice(
-                              0,
-                              16
-                            )}
-                            ..
-                          </>
-                        ) : (
-                          `${textFromat(_.upperFirst(firstName))} ${textFromat(
-                            _.upperFirst(lastName)
-                          )}`
-                        )}
-                      </span>
+                    {isFetching ? (
+                      <Skeleton
+                        width="1.2rem"
+                        height="1.2rem"
+                        variant="circular"
+                      ></Skeleton>
                     ) : (
-                      ""
+                      <>
+                        {flag && (
+                          <Box
+                            component={"span"}
+                              sx={{ height: { sm: "10px" ,md:"15px"} }}
+                            className={`fi fi-${flag?.toLowerCase()}`}
+                          ></Box>
+                        )}
+                      </>
                     )}
+                    {isFetching ? (
+                      <Skeleton width={"40%"} component="h2"></Skeleton>
+                    ) : (
+                      <Typography
+                        sx={{
+                          ml: ".2rem",
+                          fontWeight: "600",
+                          fontSize: {  sm: "0.8rem" ,md:"1rem"},
+                          color: "black",
+                          }}
+                          className="line-clamp"
+                      >
+                        {isMobile && firstName ? (
+                          <span>
+                            {`${textFromat(_.upperFirst(firstName))} ${textFromat(
+                              _.upperFirst(lastName)
+                            )}`.length > 18 ? (
+                              <>
+                                {`${textFromat(
+                                  _.upperFirst(firstName)
+                                )} ${textFromat(_.upperFirst(lastName))}`.slice(
+                                  0,
+                                  16
+                                )}
+                                ..
+                              </>
+                            ) : (
+                              `${textFromat(_.upperFirst(firstName))} ${textFromat(
+                                _.upperFirst(lastName)
+                              )}`
+                            )}
+                          </span>
+                        ) : (
+                          ""
+                        )}
 
-                    {!isMobile && firstName ? (
-                      <span>
-                        {`${textFromat(_.upperFirst(firstName))} ${textFromat(
-                          _.upperFirst(lastName)
-                        )}`.length > 22 ? (
-                          <>
-                            {`${textFromat(
-                              _.upperFirst(firstName)
-                            )} ${textFromat(_.upperFirst(lastName))}`.slice(
-                              0,
-                              20
+                        {!isMobile && firstName ? (
+                          <span>
+                            {`${textFromat(_.upperFirst(firstName))} ${textFromat(
+                              _.upperFirst(lastName)
+                            )}`.length > 22 ? (
+                              <>
+                                {`${textFromat(
+                                  _.upperFirst(firstName)
+                                )} ${textFromat(_.upperFirst(lastName))}`.slice(
+                                  0,
+                                  20
+                                )}
+                                ..
+                              </>
+                            ) : (
+                              `${textFromat(_.upperFirst(firstName))} ${textFromat(
+                                _.upperFirst(lastName)
+                              )}`
                             )}
-                            ..
-                          </>
+                          </span>
                         ) : (
-                          `${textFromat(_.upperFirst(firstName))} ${textFromat(
-                            _.upperFirst(lastName)
-                          )}`
+                          ""
                         )}
-                      </span>
-                    ) : (
-                      ""
+                      </Typography>
                     )}
-                  </Typography>
-                )}
-              </Box>
+                  </Box>
+              }
 
               <Box
                 sx={{

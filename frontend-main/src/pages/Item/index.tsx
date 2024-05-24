@@ -3,7 +3,8 @@ import { CSSProperties, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { axiosPublic } from 'src/axios/axios';
 import ItemDisplay from 'src/components/ItemDescriptionCompnents/ItemDisplay';
-
+import { motion } from 'framer-motion';
+import useScrollToTop from 'src/hooks/useScrolllToTop';
 import VisitorLayout from 'src/components/layouts/VisitorLayout';
 import { SingleItemType } from 'src/utilities/types';
 
@@ -46,9 +47,6 @@ const ItemPage = () => {
 };
 
 export default ItemPage;
-
-import { motion } from 'framer-motion';
-import useScrollToTop from 'src/hooks/useScrolllToTop';
 
 const styleContainer = {
   position: 'relative',

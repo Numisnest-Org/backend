@@ -187,32 +187,35 @@ const Collectionscard = ({
       )}
       <Typography
         sx={{
-          fontSize: '12px',
-          fontWeight: '500',
-          pt: '1rem',
+          fontSize: '16px',
+          fontWeight: '700',
+          pt: '0.5rem',
           textAlign: 'center',
         }}
+        className="line-clamp"
       >
         {collectionName}{' '}
       </Typography>
+      <hr />
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 0fr)',
+          gridTemplateColumns: 'repeat(2, 1fr)',
           rowGap: '0rem',
           justifyContent: 'center',
-          my: '1rem',
+          my: '0.5rem',
+          alignItems: 'center',
         }}
       >
         {filledImages.map((image, index) => (
           <Box
             key={index}
             sx={{
-              width: { xs: '4.5rem', lg: '5rem', xl: '6rem' },
               position: 'relative',
               paddingBottom: '100%',
               border: { xs: '1px solid #fff', md: '2px solid #fff' },
               // backgroundImage: `url(${image})`,
+
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center',
@@ -228,6 +231,7 @@ const Collectionscard = ({
                 width: '100%',
                 height: '100%',
                 padding: '0.2rem',
+                objectFit: 'cover',
               }}
               alt=""
             />
@@ -242,6 +246,7 @@ const Collectionscard = ({
           bottom: '0',
           left: '50%',
           transform: 'translateX(-50%)',
+          fontWeight: '700',
         }}
       >
         {' '}

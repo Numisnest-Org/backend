@@ -77,13 +77,15 @@ const Collections = ({
             sx={{
               width: "100%",
               margin: "0 auto",
-              overflow: { xs: "scroll", lg: "unset" },
+              overflow: { xs: "auto", lg: "unset" },
             }}
           >
             <Box
               sx={{
                 display: "flex",
                 gap: "1rem",
+                justifyContent: "stretch",
+                alignItems: "stretch",
               }}
             >
               {sellerCollectionData?.slice(0, 3)?.map((collection, index) => (
