@@ -102,11 +102,7 @@ const SellerPage = () => {
       />
       <Featured data={featuredItems} />
 
-      <Collections
-        sellerCollectionData={sellerCollection}
-        sellerId={data?._id}
-        sellerFirstname={data?.first_name}
-      />
+
       <Collections
         sellerCollectionData={sellerCollection}
         sellerId={data?._id}
