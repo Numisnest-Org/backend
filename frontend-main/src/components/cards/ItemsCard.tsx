@@ -523,7 +523,7 @@ const ItemsCard = ({
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
-
+                  marginTop: "auto",
                   alignItems: { xs: "start", sm: "center" },
                   left: { xs: "9px", md: "14px" },
                   right: { xs: "9px", md: "14px" },
