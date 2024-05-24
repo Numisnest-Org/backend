@@ -135,7 +135,8 @@ export interface SellerProfileType {
   suspended: boolean;
   verify: boolean;
   _id: string;
-  details?:string;
+  details?: string;
+  profile_description?: string;
 }
 
 export interface SingleSeller {
@@ -220,7 +221,7 @@ export interface SingleItemType {
   _id: string;
   seller_id: string;
   name: string;
-  description: any;
+  description: string;
   country: string[];
   photo1: string;
   photo2: string;
@@ -241,7 +242,7 @@ export interface SingleItemType {
   seller_info: singleSellerWOFeatured[];
   similar_items: Partial<ItemType>[];
   firstPhoto?: Photo;
-  year?: any;
+  year?: string;
   pinned?:boolean
 }
 

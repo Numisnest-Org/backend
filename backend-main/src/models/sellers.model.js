@@ -89,6 +89,11 @@ const SellerModel = mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        profile_description: {
+            type: String,
+            default: "",
+        },
+
     },
     {
         timestamps: true,

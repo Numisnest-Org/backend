@@ -207,6 +207,7 @@ export const updateProfile = async (req, res) => {
             about,
             delivery_option,
             country,
+            details
         } = req.body;
 
         const user = req.user;
@@ -230,6 +231,7 @@ export const updateProfile = async (req, res) => {
                 delivery_option: delivery_option,
                 country: country?.toLowerCase(),
                 photo: profilePix === false ? seller.photo : profilePix[0],
+                profile_description: details
             },
             {
                 upsert: true,

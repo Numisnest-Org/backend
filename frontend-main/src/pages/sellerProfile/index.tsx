@@ -31,6 +31,7 @@ const SellerProfile = () => {
   const [refresh, setRefresh] = useState<boolean>(false);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     socket.on('user online status', (data: any) => {
       console.log('user:', data);
       if (data.userid) {
@@ -66,10 +67,8 @@ const SellerProfile = () => {
         setProfileData(sellerProfile);
         setSellerProfileCollections(profileCollection);
         setSellerProfileItems(profileItems.items);
-
-        console.log(sellerCollectionReponse)
       } catch (error) {
-        throw Error;
+        console.log("Error occurred fetching seller profile");
       }
     };
 
@@ -89,7 +88,7 @@ const SellerProfile = () => {
         url={profileData?.photo?.secure_url}
         country={profileData?.country}
         flag={profileData?.iso_code}
-        profileDescription={profileData?.details}
+        profileDescription={profileData?.profile_description}
       />
       <SellerFeatured id={profileData?._id} />
       <SellerCollection

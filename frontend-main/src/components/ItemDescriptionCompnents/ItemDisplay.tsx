@@ -468,10 +468,10 @@ const ItemDisplay = ({
                           background: "rgb(133 133 133 / 19%)",
                           p: "24px",
                           paddingBottom: "20px",
-                          borderRadius: "24px",
+                          borderRadius: "10px",
                           mt: `${isMobile ? "40px" : "70px"}`,
                           maxWidth: `${isMobile ? "auto" : "700px"}`,
-                          width: "400px",
+                          width: {sx:"400px", lg:"500px"},
                         }}
                       >
                         <Typography

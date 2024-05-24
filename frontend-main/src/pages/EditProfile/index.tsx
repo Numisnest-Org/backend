@@ -4,16 +4,14 @@ import EditProfileForm from 'src/components/forms/edit-profile'
 import VisitorLayout from 'src/components/layouts/VisitorLayout'
 import useAppContext from 'src/hooks/useAppContext'
 import useAxiosPrivate from 'src/hooks/useAxiosPrivate'
-import useCollectorsAxiosPrivate from 'src/hooks/useCollectorsAxiosPrivate'
 import { SellerProfileType } from 'src/utilities/types'
 import { Spinner } from '../Item'
 
 const EditProfilePage = () => {
-  const {state,dispatch} = useAppContext()
+  const {state} = useAppContext()
   const {userType}= state
   const axiosPrivate = useAxiosPrivate()
   const [userProfile,setUserProfile]=useState<Partial<SellerProfileType> |null>(null)
-  const axiosCollectorsPrivate = useCollectorsAxiosPrivate()
    const [isFetching, setIsFetching] = useState(true);
   useEffect(()=>{
     const fetchUserProfile = async()=>{
@@ -30,7 +28,7 @@ const EditProfilePage = () => {
           setUserProfile(data);
         }
       } catch (error) {
-        
+        console.log("Error occurred fetching user profile");        
       }finally{
         setIsFetching(false)
       }
@@ -56,7 +54,7 @@ const EditProfilePage = () => {
           About={userProfile?.about}
           DeliveryOption={userProfile?.delivery_option}
           profile_photo={userProfile?.photo?.secure_url}
-          profiledescription={userProfile?.details}
+          profiledescription={userProfile?.profile_description}
         />
       )}
     </VisitorLayout>

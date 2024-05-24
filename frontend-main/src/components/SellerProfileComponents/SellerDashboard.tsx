@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Typography,
-  useMediaQuery
 } from '@mui/material';
 import _ from 'lodash';
 import { useState } from 'react';
@@ -17,6 +16,7 @@ import settings from 'src/assets/Image/setting.png';
 import vIcon from 'src/assets/Image/visibility.png';
 import LINKS from 'src/utilities/links';
 import infoIcon from '../../assets/Image/info.png';
+import dayjs from "dayjs";
 
 interface Props {
   firstName?: string;
@@ -29,7 +29,7 @@ interface Props {
   url?: string;
   country?: string;
   flag?: string;
-  profileDescription?:string
+  profileDescription?: string;
 }
 const SellerDashboard = ({
   firstName,
@@ -41,11 +41,9 @@ const SellerDashboard = ({
   deliveryOptions,
   url,
   profileDescription,
-  country,
   flag,
 }: Props) => {
   const navigate = useNavigate();
-  const isNotMobileScreens = useMediaQuery('(min-width:600px)');
   const style = {
     link: {
       textDecoration: 'none',
@@ -77,12 +75,12 @@ const SellerDashboard = ({
     {
       title: "Account visibility",
       icon: vIcon,
-      func:()=>navigate(LINKS.accountVisibility)
+      func: () => navigate(LINKS.accountVisibility)
     },
     {
       title: "Block user",
       icon: vIcon,
-      func:()=>navigate(LINKS.blockuser)
+      func: () => navigate(LINKS.blockuser)
     },
     // {
     //   title: 'Become a seller',
@@ -251,7 +249,7 @@ const SellerDashboard = ({
                 borderRadius: "0.4rem",
                 "&:hover": { color: "#fff", backgroundColor: "#1166dc" },
               }}
-              // onClick={messageSeller}
+            // onClick={messageSeller}
             >
               <Link to={LINKS.chatpage} style={style.link}>
                 Message
@@ -264,16 +262,47 @@ const SellerDashboard = ({
               mt: "2rem",
               display: "flex",
               flexDirection: "column",
-              gap: { xs: "1rem", md: "1.6rem" },
             }}
           >
-            {/* <Box
+            <Box
               sx={{
                 width: "100%",
                 display: "flex",
                 flexDirection: "row",
                 gap: { xs: "1rem", md: "2rem" },
+                alignItems: "center",
+                marginLeft: { xs: "65px", md: "80px" }
+              }}
+            >
+              <Typography
+                sx={{
+                  width: "80%",
+                  fontWeight: "500",
+                  fontSize: { md: "18px" },
+                  wordWrap: "break-word",
+                }}
+              >
+                Member Since {dayjs(createdAt).format("DD.MM.YYYY  ")}
+              </Typography>
+            </Box>
 
+            <Box
+              sx={{
+                width: "130px",
+                height: "2px",
+                marginTop: "6px",
+                marginLeft: { xs: "65px", md: "80px" },
+                backgroundColor: "#69696999",
+              }}
+            />
+
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
+                gap: { xs: "1rem", md: "2rem" },
+                marginTop: "20px",
                 alignItems: "center",
               }}
             >
@@ -282,37 +311,32 @@ const SellerDashboard = ({
                 alt="information icon"
                 style={{ width: "50px" }}
               />
-              <>
-                <Typography
-                  sx={{
-                    width: "80%",
-                    fontWeight: "500",
-                    fontSize: { md: "18px" },
-                    wordWrap: "break-word",
-                  }}
-                >
-                  Member Since {dayjs(createdAt).format("DD.MM.YYYY  ")}
-                  <Box
-                    sx={{
-                      width: { xs: "20%", md: "10%" },
-                      height: "2px",
-                      marginTop: "10px",
-                      backgroundColor: "#69696999",
-                    }}
-                  >
-
-                  </Box>
-                </Typography>
-              </>
-            </Box> */}
+              <Typography
+                sx={{
+                  width: "80%",
+                  fontWeight: "500",
+                  fontSize: { md: "18px" },
+                  wordWrap: "break-word",
+                }}
+              >{profileDescription}</Typography>
+            </Box>
+            <Box
+              sx={{
+                width: "130px",
+                height: "2px",
+                marginTop: "6px",
+                marginLeft: { xs: "65px", md: "80px" },
+                backgroundColor: "#69696999",
+              }}
+            />
             <Box
               sx={{
                 width: "100%",
                 display: "flex",
                 flexDirection: "row",
                 gap: { xs: "1rem", md: "2rem" },
-
                 alignItems: "center",
+                marginTop: "20px"
               }}
             >
               <img src={delivery} alt="delivery" style={{ width: "50px" }} />
@@ -324,25 +348,25 @@ const SellerDashboard = ({
                     fontSize: { md: "18px" },
                     wordWrap: "break-word",
                   }}
-                >
-                  {deliveryOptions}
-                  <Box
-                    sx={{
-                      width: { xs: "20%", md: "10%" },
-                      height: "2px",
-                      marginTop: "10px",
-                      backgroundColor: "#69696999",
-                    }}
-                  ></Box>
-                </Typography>
+                >{deliveryOptions} </Typography>
               </>
             </Box>
+            <Box
+              sx={{
+                width: "130px",
+                height: "2px",
+                marginTop: "6px",
+                marginLeft: { xs: "65px", md: "80px" },
+                backgroundColor: "#69696999",
+              }}
+            />
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "row",
                 gap: { xs: "1rem", md: "2rem" },
                 alignItems: "center",
+                marginTop: "20px",
               }}
             >
               <img src={phone} alt="delivery" style={{ width: "50px" }} />
@@ -354,42 +378,7 @@ const SellerDashboard = ({
                 </Typography>
               </Box>
             </Box>
-            <Box
-              sx={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                gap: { xs: "1rem", md: "2rem" },
 
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={infoIcon}
-                alt="information icon"
-                style={{ width: "50px" }}
-              />
-              <>
-                <Typography
-                  sx={{
-                    width: "80%",
-                    fontWeight: "500",
-                    fontSize: { md: "18px" },
-                    wordWrap: "break-word",
-                  }}
-                >
-                  Profile Details {profileDescription}
-                  <Box
-                    sx={{
-                      width: { xs: "20%", md: "10%" },
-                      height: "2px",
-                      marginTop: "10px",
-                      backgroundColor: "#69696999",
-                    }}
-                  ></Box>
-                </Typography>
-              </>
-            </Box>
           </Box>
         </Box>
       </Box>
