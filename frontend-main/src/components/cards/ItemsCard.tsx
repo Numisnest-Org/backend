@@ -164,7 +164,17 @@ const ItemsCard = ({
     },
   ];
 
-  console.log(cardtype, flag, createdAt, featured);
+  const getModifiedAmount = () => { 
+    try {
+      const price = Number(amount);
+      if (price < 10) return price.toFixed(2);
+      if (price < 100) return price.toFixed(1);
+      return price.toFixed(0);
+    } catch (error) {
+      return "0.00";
+    }
+  }
+  console.log(cardtype, flag, createdAt, featured, amount);
 
   return (
     <div>
@@ -545,12 +555,7 @@ const ItemsCard = ({
                       color: "black",
                     }}
                   >
-                    {`${
-                      amount?.toLocaleString(undefined, {
-                        maximumFractionDigits: 2,
-                        minimumFractionDigits: 2,
-                      }) || "0.00"
-                    } ${currency?.toUpperCase() ?? ""}`}
+                    {getModifiedAmount()}
                   </Typography>
                 )}
 
