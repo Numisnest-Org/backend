@@ -298,7 +298,7 @@ const Itemdisplay2 = ({
           sx={{
             width: '100%',
             height: isMobile ? '400px' : '500px',
-            borderRadius: '10%',
+            borderRadius: '10px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

@@ -312,7 +312,7 @@ const ItemDisplay = ({
                         }}
                         component="span"
                       >{`${Math.round(
-                        Number(`${data?.convertedPrice} `)  || 0
+                        Number(`${data?.convertedPrice} `) || 0
                       )} ${data?.convertedCurrency?.toUpperCase() ?? "ILS"}`}</Typography>
                     </Box>
                   </Box>
@@ -363,7 +363,7 @@ const ItemDisplay = ({
                     <Box
                       className="seller-details"
                       style={{ paddingInline: "10px" }}
-                      sx={{ pt: `${isMobile ? "10px" : "40px"}`,  }}
+                      sx={{ pt: `${isMobile ? "10px" : "40px"}`, }}
                     >
                       <Typography
                         sx={{
@@ -375,72 +375,73 @@ const ItemDisplay = ({
                       </Typography>
                       <Box
                         sx={{
-                          paddingLeft: "10px", 
-                          paddingRight:  "5px",
+                          padding: "10px",
+                          paddingRight: "5px",
                           background: "#fff",
                           border: "2px solid black",
-                          borderRadius: "20px",
+                          borderRadius: "10px",
                           maxWidth: `${isMobile ? "auto" : "500px"}`,
-                          display: "grid",
-                          gap: { xs: "0.8rem", md: "1rem" },
+                          display: "flex",
+                          gap: { xs: "20px" },
                           placeItems: "center",
-                          gridTemplateColumns: {
-                            xs: "0.3fr 2fr 2fr",
-                            md: "1.1fr 1.8fr auto",
-                          },
+                          cursor: "pointer",
                         }}
+                        onClick={() =>
+                          navigate(`/seller/${data?.seller_info[0]._id}`)
+                        }
                         className="sellerBox"
                       >
                         <Box
                           className="sellerImg"
-                          sx={{ width: { xs: "60px", md: "100px" } }}
+                        sx={{ width: { xs: "60px", md: "80px" }, height: { xs: "60px", md: "80px" }, borderRadius: "5px", overflow: "hidden"}}
                         >
                           {data?.seller_info[0].photo?.secure_url ? (
                             <img
-                              style={{ width: "80%" }}
+                              style={{ width: "100%", height:"100%", borderRadius: "5px"}}
                               src={data?.seller_info[0].photo?.secure_url}
                               alt=""
                             />
                           ) : (
                             <img
-                              style={{ width: "80%" }}
+                              style={{ width: "100%", height:"100%", borderRadius: "5px" }}
                               src={avater}
                               alt=""
                             />
                           )}
                         </Box>
-                        <Box className="sellerText" sx={{ display: "flex" }}>
-                          <Box>
-                            <Typography
-                              className="sellerName"
-                              sx={{
-                                fontSize: { sx: "1rem", md: "24px" },
-                                fontWeight: "700",
-                                
-                              }}
-                            >
-                              {upperFirst(`${data?.seller_info[0].first_name}`)}{" "}
-                              {upperFirst(`${data?.seller_info[0].last_name}`)}
-                            </Typography>
+                        <Box className="sellerText" >
+                          <Typography
+                            className="sellerName line-clamp"
+                            sx={{
+                              fontSize: { sx: "1rem", md: "24px" },
+                              fontWeight: "700",
+
+                            }}
+                          >
+                            {upperFirst(`${data?.seller_info[0].first_name}`)}{" "}
+                            {upperFirst(`${data?.seller_info[0].last_name}`)}
+                          </Typography>
+                          <Box sx={{display:"flex", gap:"10px"}}>
                             <Typography
                               sx={{
                                 wordWrap: "break-word",
-                                width: "100%",
-                                maxWidth: { xs: "140px", md: "200px" },
                                 fontSize: { xs: ".7rem", md: ".8rem" },
                               }}
                             >
                               {data?.seller_info[0].about}
                             </Typography>
+                            <Box
+                              className="sellerbtn blue-btn "
+                              // component={"div"}
+                              sx={{ p: "4px", borderRadius: "5px", fontSize: "12px"}}
+                              onClick={e => {
+                                e.stopPropagation();
+                                messageSeller();
+                              }}
+                            >
+                              Message
+                            </Box>
                           </Box>
-                        </Box>
-                        <Box
-                          className="sellerbtn blue-btn "
-                          // component={"div"}
-                          sx={{marginBottom: "-40px",p:"4px",borderRadius:"5px"}}
-                          onClick={messageSeller}
-                        >
-                          Message 
                         </Box>
                       </Box>
 
@@ -466,7 +467,7 @@ const ItemDisplay = ({
                         sx={{
                           background: "rgb(133 133 133 / 19%)",
                           p: "24px",
-                          paddingBottom:"20px",
+                          paddingBottom: "20px",
                           borderRadius: "24px",
                           mt: `${isMobile ? "40px" : "70px"}`,
                           maxWidth: `${isMobile ? "auto" : "700px"}`,
@@ -508,21 +509,6 @@ const ItemDisplay = ({
                           </Typography>
                         </Link>
                       </Box>
-                      {/* <Box
-                        sx={{
-                          mt: "48px",
-                          textAlign: "right",
-                          display: `${isMobile ? "none" : "block"}`,
-                        }}
-                      >
-                        <Link className="red-btn">
-                          {" "}
-                          <Typography sx={{ color: "#fff !important" }}>
-                            <WarningAmberIcon />
-                          </Typography>{" "}
-                          Report this Item
-                        </Link>
-                      </Box> */}
                     </Box>
                   </Box>
                 )}{" "}
