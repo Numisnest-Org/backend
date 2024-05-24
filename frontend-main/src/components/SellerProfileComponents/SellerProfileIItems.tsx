@@ -208,7 +208,6 @@ const SellerProfileIItems = ({ data, refresh, setRefresh }: Props) => {
             {data?.slice(0, 24)?.map((itemm: any, index: number) => (
               <Box key={index} sx={{ width: "100%", height: "100%" }}>
                 <ItemsCard
-                  key={indexx}
                   url={itemm.photos?.[0].secure_url}
                   currency={itemm.convertedCurrency}
                   selling={itemm?.name}
