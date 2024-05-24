@@ -328,7 +328,7 @@ const ItemDisplay = ({
                     >
                       <Typography
                         dangerouslySetInnerHTML={{
-                          __html: DOMPurify.sanitize(data?.description),
+                          __html: DOMPurify.sanitize(data?.description??""),
                         }}
                       />
                     </Box>

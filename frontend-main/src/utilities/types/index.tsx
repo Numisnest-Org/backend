@@ -242,7 +242,7 @@ export interface SingleItemType {
   seller_info: singleSellerWOFeatured[];
   similar_items: Partial<ItemType>[];
   firstPhoto?: Photo;
-  year?: string;
+  year?: any;
   pinned?:boolean
 }
 

@@ -1,37 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
-import ModalWrapper from "../Modal/ModalWrapper";
-import InputComponent from "../inputComponent.tsx/InputComponent";
 import useAxiosPrivate from "src/hooks/useAxiosPrivate";
 import {
   Box,
   Button,
-  InputAdornment,
   InputBase,
   MenuItem,
   Select,
   SelectChangeEvent,
-  Switch,
   TextField,
-  Typography,
 } from "@mui/material";
 import TextFieldInputLimit from "../form-components/TextFieldInputLimit";
 import { CollectionType, SingleItemType } from "src/utilities/types";
-import ToggleSwitch, {
+import {
   CustomSwitch,
 } from "../AddItemsComponents/toggleISwitch";
 import { toast } from "react-toastify";
 import useCountryName from "src/hooks/useCountryName";
-import _ from "lodash";
 import MultipleInputSelect from "../inputComponent.tsx/multipleInputSelect";
 import { CategoryOptions } from "../AddItemsComponents/AddItemsComp";
 import MultipleSelectDropdown from "../Select/MultiselectDropdown";
 import MultipleSelectDropdownCountry from "../Select/MultiselectDropdownCountry";
-import { useNavigate } from "react-router-dom";
-import dayjs, { Dayjs } from "dayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
 import ReactQuill from "react-quill";
 interface Props {
   data?: SingleItemType;
@@ -42,12 +31,10 @@ interface Props {
 }
 const EditItems = ({ data, id, closeModal, setRefresh, refresh }: Props) => {
   const axiosPrivate = useAxiosPrivate();
-  const navigate = useNavigate();
   const [video, setvideo] = useState<File | null | string | undefined>(
     data?.video
   );
   const [title, setTitle] = useState(data?.name);
-  const [description, setDescription] = useState(data?.description);
   const [currency, setCurrency] = useState("USD");
   const [amount, setAmount] = useState<number | undefined>(data?.price);
   const [category, setCategory] = useState(data?.category?.join(","));
