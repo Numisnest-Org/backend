@@ -324,15 +324,14 @@ const ItemsCard = ({
           width: "100%",
           //  height: { xs: '300px', md: '350px' },
           height:
-            flag || createdAt
+            (flag || createdAt)
               ? { xs: '300px', md: '350px' }
               : { xs: '130px', md: '180px' },
           bgcolor: '#FFFFFF',
           border: '1px solid #E6E9F9',
           borderRadius: '1rem',
-          p: { xs: '0.4rem', sm: '1rem' },
           p:
-            flag || createdAt
+            (flag || createdAt)
               ? { xs: "0.4rem", sm: "1rem" }
               : { xs: "0.2rem", sm: "0.5rem" },
           position: "relative",
