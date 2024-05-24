@@ -21,11 +21,11 @@ const ItemsProfile = ({ data: initialData, sellerId }: Props) => {
     }
   }, [initialData]);
 
-  // console.log('Data:', data);
+  console.log('Data:', data);
 
   return (
     <Box>
-      {data?.items?.[0] && (
+      {data?.[0] && (
         <Box
           sx={{
             display: "flex",
@@ -68,12 +68,12 @@ const ItemsProfile = ({ data: initialData, sellerId }: Props) => {
         </Box>
       )}
 
-      {data?.items?.[0] && (
+      {data?.[0] && (
         <Box
           sx={{
             p: "1rem",
             bgcolor: "hsla(215, 100%, 92%, 1)",
-            boxShadow: "1px 2px 2px black",
+            // boxShadow: "1px 2px 2px black",
           }}
         >
           <Box
@@ -87,7 +87,7 @@ const ItemsProfile = ({ data: initialData, sellerId }: Props) => {
               gap: { xs: "0.5rem", sm: "1rem" },
             }}
           >
-            {data.items
+            {data
               ?.slice(0, 24)
               ?.map((item: SellerItemType, index: number) => (
                 <ItemsCard

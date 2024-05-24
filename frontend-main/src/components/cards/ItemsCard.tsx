@@ -463,15 +463,17 @@ const ItemsCard = ({
 
               <Box
                 sx={{
-                  width: "100x",
+                  width: "100%",
                   margin: "0 auto",
-                  height: "200px",
+                  height: { xs: "150px", md: "200px"},
                   mt: cardtype === "Private" ? "10px" : "unset",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   position: "relative",
-                  overflow: "hidden"
+                  overflow: "hidden",
+                  background: "#0000000d",
+                  borderRadius: "0.5rem",
 
                 }}
               >

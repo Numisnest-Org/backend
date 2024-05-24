@@ -61,7 +61,7 @@ const SellerPage = () => {
         setSellerItem(data);
         console.log(data);
       } catch (error) {
-        console.log(error);
+        console.log("SELLER PROFILE ERROR  \n", error, "\nSELLER PROFILE ERROR");
       } finally {
         setIsFetching(false);
       }
