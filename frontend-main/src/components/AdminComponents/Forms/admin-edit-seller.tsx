@@ -12,23 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import ProfilePhoto from "src/components/form-components/ProfilePhoto";
-import TextInput from "src/components/form-components/textInput";
-import useAdminPrivate from "src/hooks/useAdminPrivate";
-import LINKS from "src/utilities/links";
-import { SingleSeller, singleSellerWOFeatured } from "src/utilities/types";
-interface Props {
-  data?: singleSellerWOFeatured;
-  SellerId: string | null;
-}
-const AdminEditsellerForm = ({ data, SellerId }: Props) => {
-  SellerId;
-  const adminPrivate = useAdminPrivate();
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [firstname, setFirstname] = useState<string | null | undefined>(
-    data?.first_name
+import 
   );
   const [lastname, setLastname] = useState<string | null | undefined>(
     data?.last_name
