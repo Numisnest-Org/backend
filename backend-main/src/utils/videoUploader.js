@@ -17,17 +17,7 @@ const videoUploader = async (req, fileHandle, unique) => {
                         format: "mp4",
                         transformation: [
                             { width: 640, height: 480, crop: "pad" },
-                        ],
-                    },
-                ],
-            },
-            (err, file) => {
-                if (file) {
-                    resolve({
-                        secure_url: file.secure_url,
-                        public_id: file.public_id,
-                    });
-                } else {
+                       
                     reject({
                         error: err.name,
                         message: `Error occured while uploading image: ${err.message}`,

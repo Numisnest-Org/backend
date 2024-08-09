@@ -7,7 +7,7 @@ export const cacheAndRespond = (req, res, sellers, apage, page, limit) => {
         page: apage,
     };
 
-    const key = req.originalUrl || req.url;
+    const key = req.origilUrl || req.url;
     cache.put(key, data, 30 * 60 * 1000);
 
     console.log(data);
@@ -18,7 +18,7 @@ export const cacheAndRespond = (req, res, sellers, apage, page, limit) => {
         {
             sellers: data.values,
             page: `${page || 1} of ${Math.ceil(
-                data.page[0]?.countPage / Number(limit)
+                data.page[0]?.countge / Number(limit)
             )}`,
         },
         "sellers data"

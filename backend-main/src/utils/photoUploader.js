@@ -19,29 +19,7 @@ const photoUploader = async (req, fileHandle, unique) => {
 
     for (let file of files) {
         const pixRes = new Promise(async (resolve, reject) => {
-            cloudinary.uploader.upload(
-                file.tempFilePath,
-                {
-                    folder: `NumismaticFiles/photos/${unique}`,
-                    resource_type: "image",
-                    transformation: [
-                        {
-                            quality: 80,
-                            format: "png",
-                        },
-                    ],
-                },
-                (err, file) => {
-                    if (file) {
-                        resolve({
-                            secure_url: file.secure_url,
-                            public_id: file.public_id,
-                        });
-                    } else {
-                        reject({
-                            error: err.name,
-                            message: `Error occured while uploading image: ${err.message}`,
-                        });
+            
                     }
                 }
             );

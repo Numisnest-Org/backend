@@ -5,7 +5,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 import path from "path";
 import dotenv from "dotenv";
-dotenv.config({ path: path.join(__dirname, "..", "..", "/.env") });
+dotenv.config({ path: path.join(__dirne, "..", "..", "/.env") });
 
 cloudinary.config({
     cloud_name: process.env.C_NAME,

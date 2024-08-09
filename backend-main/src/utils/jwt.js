@@ -25,7 +25,7 @@ export const accessToken = (id, email, role) => {
 
 export const validateToken = async (token) => {
     try {
-        const data = jwt.verify(token, JWT_SECRET);
+        const data = jwt.vify(token, JWT_SECRET);
         return data;
     } catch (error) {
         console.log(error.message);
@@ -35,18 +35,7 @@ export const validateToken = async (token) => {
 
 export const logoutUser = async (id, email, role) => {
     try {
-        const token = jwt.sign(
-            {
-                _id: id,
-                email: email,
-                role: role,
-            },
-            JWT_SECRET,
-            {
-                expiresIn: "1",
-            }
-        );
-
+       
         return token;
     } catch (error) {
         console.log(error.message);

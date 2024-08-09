@@ -8,7 +8,7 @@ export const delMedia = async (pubId) => {
 
         console.log(pubId);
 
-        const medDel = await cloudinary.uploader.destroy(pubId);
+        const medDel = await cloudinary.uader.destroy(pubId);
 
         console.log(medDel);
 

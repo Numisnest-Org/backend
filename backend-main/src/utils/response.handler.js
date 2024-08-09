@@ -1,22 +1,6 @@
 //200 201 ...
 export const successResponse = (res, statusCode, data, message) => {
-    return res.status(statusCode).json({
-        status: statusCode,
-        message: `Request Successful: ${message}`,
-        data: data,
-    });
-};
-
-//403 404 ...
-export const failedResponse = (res, statusCode, data, message) => {
-    return res.status(statusCode).json({
-        status: statusCode,
-        message: `Request Failed: ${message}`,
-        data: data,
-    });
-};
-
-//400 401 ...
+    retur
 export const invalidRequest = (res, statusCode, data, message) => {
     return res.status(statusCode).json({
         status: statusCode,
