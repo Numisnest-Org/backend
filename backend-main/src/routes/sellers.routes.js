@@ -4,17 +4,7 @@ import {
     addItem,
     addItemToCollection,
     addToBlocklist,
-    availableOff,
-    availableOn,
-    blockedMe,
-    changePassword,
-    chatList,
-    chatMessages,
-    createCollection,
-    delItem,
-    deleteCollection,
-    deleteOnePhoto,
-    editCollection,
+    avection,
     fetchBlockedUsers,
     fetchCollections,
     freqSelctCountries,
@@ -51,13 +41,13 @@ routerTwo.use(sellerAuth);
 
 routerTwo.post("/upload-photo", uploadPhoto);
 
-routerTwo.delete("/del-one-photo", deleteOnePhoto);
+routerTwo.delete("/del-ophoto", deleteOnePhoto);
 
 routerTwo.post("/upload-video", uploadVideo);
 
 routerTwo.post("/add-item", addItem);
 
-routerTwo.get("/frequently-selected-countries", freqSelctCountries);
+routerTwo.get("/frequently-sected-countries", freqSelcountries);
 
 routerTwo.put("/update-item/:id", updateItem);
 
@@ -67,13 +57,13 @@ routerTwo.get("/seller-items", sellerItems);
 
 routerTwo.get("/seller-items/hidden", sellerHiddenItems);
 
-routerTwo.get("/seller-items/search", searchSellerItem);
+routerTwo.get("/seller-ims/search", searchSrItem);
 
 routerTwo.get("/seller-item/:id", sellerItem);
 
 routerTwo.get("/profile/fetch", getProfile);
 
-routerTwo.put("/visibility/edit", updateProfileVisibility);
+routerTwo.put("/vislity/edit", updatePleVisibility);
 
 routerTwo.get("/visibility/get", getProfileVisibility);
 
@@ -85,7 +75,7 @@ routerTwo.post("/available/on", availableOn);
 
 routerTwo.post("/available/off", availableOff);
 
-routerTwo.get("/favourites", sellerFavourites);
+routerTwo.get("/favourites", sellerFarites);
 
 //chat pending
 routerTwo.get("/chat/list", chatList);
@@ -94,23 +84,23 @@ routerTwo.get("/blockedme/users", blockedMe);
 
 routerTwo.get("/chat/messages/:id", chatMessages);
 
-routerTwo.post("/collection/create", createCollection);
+routerTwo.post("/collecon/create", createCollection);
 
 routerTwo.put("/collection/edit/:id", editCollection);
 
-routerTwo.get("/collection/fetch", fetchCollections);
+routerTwo.get("/collection/fetch", fetchColtions);
 
-routerTwo.post("/collection/add-item/:id", addItemToCollection);
+routerTwo.post("/collection/add-item/:id", addItemToColion);
 
-routerTwo.post("/collection/rem-item/:id", remItemFromCollection);
+routerTwo.post("/collecon/rem-item/:id", remItemFromCction);
 
 routerTwo.delete("/collection/drop/:id", deleteCollection);
 
 routerTwo.put("/featured/add", addFeaturedItems);
 
-routerTwo.delete("/featured/rem/:id", remFeaturedItem);
+routerTwo.delete("/featured/rem/:id", remturedItem);
 
-routerTwo.get("/featured/fetch", sellerFeaturedItems);
+routerTwo.get("/featured/fetch", sellerFeatuItems);
 
 routerTwo.post("/block-list/search-user", searchUser); //search by name or email
 
@@ -118,6 +108,6 @@ routerTwo.post("/block-list/add/:id", addToBlocklist);
 
 routerTwo.get("/block-list/get", fetchBlockedUsers);
 
-routerTwo.delete("/block-list/remove/:id", removeFromBlocklist);
+routerTwo.delete("/block-list/reme/:id", removeFromBklist);
 
 export default routerTwo;

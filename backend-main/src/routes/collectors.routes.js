@@ -5,18 +5,7 @@ import {
     chatList,
     chatMessages,
     checkRoomExist,
-    collectorSignUp,
-    contactUs,
-    countryList,
-    cupdateProfile,
-    getFavourite,
-    getItem,
-    getItems,
-    getItemsHome,
-    getSeller,
-    getSellers,
-    infoCountryList,
-    itemsCountryList,
+    colountryList,
     logOut,
     passwordChange,
     passwordChangeCode,
@@ -36,7 +25,7 @@ import {
     usefulInfos,
     verifyEmail,
 } from "../controllers/collectors.controllers.js";
-import collectorAuth from "../middlewares/collectors.middleware.js";
+import collectorAuth from "../middlewares/collrs.middleware.js";
 // import sellerAuth from "../middlewares/sellers.middleware.js";
 // import adminAuth from "../middlewares/admin.middleware.js";
 
@@ -48,21 +37,21 @@ routerOne.post("/general/signin", signIn);
 
 routerOne.post("/general/verify-email", verifyEmail);
 
-routerOne.post("/general/password/getcode", passwordChangeCode);
+routerOne.post("/general/pasword/getcode", passwordChangeCode);
 
 routerOne.post("/general/password/change", passwordChange);
 
-routerOne.get("/general/countries", countryList);
+routerOne.get("/general/countes", countryList);
 
 routerOne.get("/general/items/countries", itemsCountryList);
 
-routerOne.get("/general/info/countries", infoCountryList);
+routerOne.get("/general/info/couries", infoCountryList);
 
 routerOne.get("/general/info", usefulInfos);
 
 routerOne.post("/general/contactus", contactUs);
 
-routerOne.post("/general/check-room", checkRoomExist);
+routerOne.post("/general/checroom", checkRoomExist);
 
 /**
  * BREAK
@@ -76,7 +65,7 @@ routerOne.get("/collector/get-sellers", getSellers);
 
 routerOne.get("/collector/get-home-items", getItemsHome);
 
-routerOne.get("/collector/search/selleranditems", searchItemsSellers);
+routerOne.get("/collector/search/seranditems", searchItemsSellers);
 
 routerOne.get("/collector/pinned/sellers", pinnedSeller);
 
@@ -84,17 +73,17 @@ routerOne.get("/collector/pinned/items", pinnedItems);
 
 routerOne.get("/collector/get-seller/:id", getSeller);
 
-routerOne.get("/collector/featured-items/:id", sellerFeaturedItems);
+routerOne.get("/collector/fured-items/:id", sellerFeaturedItems);
 
-routerOne.get("/collector/seller-items/:id", sellerItems);
+routerOne.get("/coctor/seller-items/:id", sellerItems);
 
-routerOne.get("/collector/seller-items/search/:id", searchSellerItem);
+routerOne.get("/collector/seller-items/search/:id", searchSelleem);
 
 // routerOne.get("/collector/seller-items-categ/:id", sellerItemsCateg);
 
-routerOne.get("/collector/seller-collections/:id", sellerCollections);
+routerOne.get("/collector/seller-collecns/:id", sellerCoctions);
 
-routerOne.get("/collector/seller-collection/:id", sellerCollection);
+routerOne.get("/collector/seller-coection/:id", sellerCollection);
 
 routerOne.get("/collector/search/sellers", searchSellers);
 
