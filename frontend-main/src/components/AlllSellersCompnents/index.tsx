@@ -25,18 +25,7 @@ const SellersComponents = ({
   handleSearch?: () => void;
   page: number;
   setPage: (val: number) => void;
-}) => {
-  const theme = useTheme();
-  const countryNames = useCountryName();
-  const { state } = useAppContext();
-  const { availableLocation } = state;
-  const isNotMobileScreens = useMediaQuery('(min-width:600px)');
-  return (
-    <Box sx={{ pb: '8rem', pt: '2rem' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'flex-end',
+}) => {ntent: 'flex-end',
           gap: '1rem',
           alignItems: 'center',
         }}

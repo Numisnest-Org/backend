@@ -11,7 +11,7 @@ const FavouriteSellers = ({data,isFetching}:{data:CollectorFav[]|null,isFetching
         <SellerCard
           key={index}
           flag={seller.seller?.[0].iso_code}
-          name={`${seller.seller?.[0].first_name} ${seller.seller?.[0].last_name}`}
+          name={0].first_name} ${seller.seller?.[0].last_name}`}
           url={seller.seller?.[0].photo?.secure_url}
           selling={`${seller.seller?.[0].country_code}${seller.seller?.[0].mobile}`}
           isFetching={isFetching}

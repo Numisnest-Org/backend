@@ -14,11 +14,7 @@ import {
 import React, { Fragment, useState } from 'react';
 import Image from '../../Image';
 import avater from 'src/assets/Image/numisnest avater.jpg';
-import { textFromat } from 'src/utilities/constants/helpers';
-import nora from 'src/assets/Image/nora.jpg';
-import approvedicon from 'src/assets/Image/AdminIcons/approved.svg';
-import notapprovedicon from 'src/assets/Image/AdminIcons/cancel.svg';
-import { AnimatePresence, motion } from 'framer-motion';
+import { textFrom 'framer-motion';
 import ConfirmationModal from 'src/components/Modal/are-you-sure';
 import { useNavigate } from 'react-router-dom';
 import pin from 'src/assets/Image/Pin.svg';
