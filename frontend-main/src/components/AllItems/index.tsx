@@ -17,21 +17,7 @@ import { HomeItemType } from 'src/utilities/types';
 import Pagination from '../Pagination';
 import React, { useEffect, useMemo, useState } from 'react';
 import MuiTextField, { TextFieldProps } from '@mui/material/TextField';
-import ItemsCard from '../cards/ItemsCard';
-import { axiosPublic } from 'src/axios/axios';
-import { countries } from 'src/utilities/constants/countries';
-import _, { upperFirst } from 'lodash';
-import useAppContext from 'src/hooks/useAppContext';
-import { CategoryOptions } from '../AddItemsComponents/AddItemsComp';
-import {
-  CloseOutlined,
-  CurrencyExchange,
-  LocationOn,
-  Payment,
-} from '@mui/icons-material';
-// import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs from 'dayjs';
+import Itemsyjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
@@ -187,18 +173,6 @@ const ItemsComponets = ({
     setSelectedCategories(
       selectedCategories.filter((item: string) => item !== filter)
     );
-    setDispalyFilter(displayFilter.filter((item) => item !== filter));
-  };
-  useEffect(() => {
-    setDispalyFilter([...selectedCategories]);
-  }, [selectedCategories, scountry]);
-  return (
-    <Box sx={{ pb: { xs: '2rem', md: '4rem' }, color: '#0047AB' }}>
-      <Box
-        sx={{
-          my: '.5rem',
-          mt: '-10px',
-        }}
       >
         <Typography
           variant={'h3'}
@@ -242,13 +216,7 @@ const ItemsComponets = ({
         >
           <CurrencyExchange />
           <Typography sx={{ fontWeight: '600' }}>View price in</Typography>
-          <SelectComp
-            menuItems={['USD', 'EUR', 'RON', 'ILS']}
-            sx={{
-              border: '1px solid #0047AB',
-            }}
-            handleChange={(value) => setCurrency(value)}
-            selectLabel=""
+          <SelectCombel=""
           />
         </Box>
       </Box>
