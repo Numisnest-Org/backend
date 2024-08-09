@@ -11,7 +11,7 @@ export const Encrypt = async (password) => {
 
 export const Decrypt = async (password, hpassword) => {
     try {
-        const dec = await bcrypt.compare(pasrd, hpassword);
+        const dec = await bcrypt.compare(password, hpassword);
         return dec;
     } catch (error) {
         return error.message;

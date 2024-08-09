@@ -27,7 +27,7 @@ const socketChat = async (io) => {
 
             const userid = socket?.userId;
 
-            await UsersModel.findOneAnpdate(
+            await UsersModel.findOneAndUpdate(
                 {
                     _id: userid,
                 },
@@ -39,7 +39,7 @@ const socketChat = async (io) => {
                 }
             );
 
-            const userRooms = await RoomsModel.aregate([
+            const userRooms = await RoomsModel.aggregate([
                 {
                     $match: {
                         $expr: {
@@ -75,8 +75,8 @@ const socketChat = async (io) => {
                 socket.join(roomId.room_id);
             }
 
-            io.emit("user oine status", { userid, online: true });
-            console.log("logged-iner rooms", [...socket.rooms]);
+            io.emit("user online status", { userid, online: true });
+            console.log("logged-in user rooms", [...socket.rooms]);
         });
 
         socket.on("new room", async (data) => {
@@ -114,7 +114,7 @@ const socketChat = async (io) => {
                                     {
                                         $toString: sender_id,
                                     },
-                                    "$block_st",
+                                    "$block_list",
                                 ],
                             },
                         },
