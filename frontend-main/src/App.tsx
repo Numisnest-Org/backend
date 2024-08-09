@@ -2,11 +2,7 @@ import {Router} from "./router/routes";
 import MuiThemeProvider from "./utilities/theme/MuiThemeProviders";
 import './App.css'
 import { DataValueProvider } from './utilities/context/context';
-import {ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css";
-import { io, Socket } from "socket.io-client";
-import { SocketProvider } from "./utilities/context/socketContext";
-import { DndProvider } from "react-dnd";
+import {Toasteact-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 import useScrollToTop from "./hooks/useScrolllToTop";
