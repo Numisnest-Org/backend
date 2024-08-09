@@ -6,23 +6,7 @@ const adminAuth = async (req, res, next) => {
 
     if (!token) {
         return res.status(400).json({
-            status: 400,
-            message: "User not logged-in",
-            data: null,
-        });
-    }
-
-    try {
-        const authUser = await validateToken(token);
-
-        if (!authUser || authUser == "jwt expired") {
-            return res.status(400).json({
-                status: 400,
-                message: "invalid token",
-                data: null,
-            });
-        }
-
+            
         const id = Object.values(authUser)[0];
         const user = await UsersModel.findById({ _id: id });
         if (user.role !== "admin") {

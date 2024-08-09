@@ -7,13 +7,7 @@ const ProductsCollectionsModel = mongoose.Schema(
             ref: "sellers",
             required: true,
         },
-        name: {
-            type: String,
-            required: true,
-        },
-        hidden: {
-            type: Boolean,
-            default: false,
+        t: false,
         },
         items_id: {
             type: Array,

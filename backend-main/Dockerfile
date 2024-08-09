@@ -1,15 +1,15 @@
-FROM node:18-alpine
+FROM node:18-aline
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --omit=dev
+RUN npm install --omt=dev
 
 COPY . .
 
 USER node
 
-EXPOSE 8000
+EXPOSE 8070
 
 CMD [ "npm", "run", "start"]

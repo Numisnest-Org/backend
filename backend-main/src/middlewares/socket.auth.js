@@ -3,22 +3,7 @@ import { validateToken } from "../utils/jwt.js";
 
 const socketAuth = async (token) => {
     if (!token) {
-        return {
-            status: 400,
-            message: "User not logged-in",
-            data: null,
-        };
-    }
-
-    try {
-        const authUser = await validateToken(token);
-        // console.log(authUser, "valllll");
-        if (!authUser || authUser == "jwt expired") {
-            console.log({
-                status: 400,
-                message: "invalid token/expired",
-                data: null,
-            });
+        retur
             return null;
         }
 

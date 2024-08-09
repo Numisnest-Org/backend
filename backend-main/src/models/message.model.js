@@ -7,14 +7,7 @@ const MessageModel = mongoose.Schema(
             trim: true,
             required: true,
         },
-        sender_id: {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: "users",
-            required: true,
-        },
-        message: {
-            type: String,
-        },
+        send
         message_type: {
             type: String,
             enum: ["text", "image", "document", "audio", "video"],

@@ -5,9 +5,7 @@ const FeaturedProductsModel = mongoose.Schema(
         seller_id: {
             type: mongoose.SchemaTypes.ObjectId,
             ref: "sellers",
-            required: true,
-        },
-        items_id: {
+            requd: {
             type: Array,
             ref: "items",
         },
