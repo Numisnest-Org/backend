@@ -13,13 +13,24 @@ import {
     collectorProfile,
     contactUsMessage,
     contactUsMessages,
-    delInfo,
+    delCollector,
+    delItem,
+    delSeller,
+    disApproveCollector,
+    logInfo,
+    overView,
+    pinItems,
+    pinSellers,
+    sellerProfile,
+    topSeller,
+    totalItemsByCateg,
+    usefulInfo,
     usefulInfoAll,
     usefulInfoDelete,
     usefulInfoOne,
     usefulInfoUpdate,
-} from "../controllers/admin.conollers.js";
-import adminAuth from "../middlewes/admin.middleware.js";
+} from "../controllers/admin.controllers.js";
+import adminAuth from "../middlewares/admin.middleware.js";
 
 const routerThree = express.Router();
 
@@ -30,25 +41,25 @@ routerThree.post("/signin", adminSignIn);
 routerThree.use(adminAuth);
 routerThree.get("/sellers", adminGetSellers);
 
-routerThree.get("/search/seers", adminSearchSellers);
+routerThree.get("/search/sellers", adminSearchSellers);
 
 routerThree.put("/seller/update/:id", adminUpdateSellerProfile);
 
 routerThree.get("/collectors", adminGetCollectors);
 
-routerThree.get("/search/clectors", adminSearchCollectors);
+routerThree.get("/search/collectors", adminSearchCollectors);
 
 routerThree.put("/collector/approve/:id", approveCollector);
 
-routerThree.put("/collector/disapprove/:id", disApprovllector);
+routerThree.put("/collector/disapprove/:id", disApproveCollector);
 
 routerThree.delete("/seller/remove/:id", delSeller);
 
-routerThree.delete("/collector/rove/:id", delCollector);
+routerThree.delete("/collector/remove/:id", delCollector);
 
-routerThree.put("/pined/item/:id", pinItems);
+routerThree.put("/pinned/item/:id", pinItems);
 
-routerThree.put("/pinned/seller/:id", pinSeers);
+routerThree.put("/pinned/seller/:id", pinSellers);
 
 routerThree.get("/items", adminGetItems);
 
