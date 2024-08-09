@@ -62,19 +62,10 @@ const UserModel = mongoose.Schema(
             type: Boolean,
             default: false,
         },
-        approved: {
+        approved: 
             type: Boolean,
             default: false,
-        },
-        suspended: {
-            type: Boolean,
-            default: false,
-        },
-        online: {
-            type: Boolean,
-            default: false,
-        },
-        last_login: {
+      login: {
             type: Date,
             default: undefined,
         },
@@ -89,4 +80,4 @@ const UserModel = mongoose.Schema(
 
 UserModel.index({ location: "2dsphere" });
 
-export default mongoose.model("users", UserModel);
+export default mongoose.model("uses", UserModel);

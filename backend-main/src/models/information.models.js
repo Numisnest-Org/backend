@@ -6,11 +6,7 @@ const InformationsModel = mongoose.Schema(
             type: String,
             required: true,
         },
-        description: {
-            type: String,
-            required: true,
-        },
-        country: {
+        descrtry: {
             type: [String],
         },
     },
@@ -19,4 +15,4 @@ const InformationsModel = mongoose.Schema(
     }
 );
 
-export default mongoose.model("informations", InformationsModel);
+export default mongoose.model("informions", InformationsModel);

@@ -11,15 +11,7 @@ const sellerVisibilityModel = mongoose.Schema(
             type: Boolean,
             default: true,
         },
-        collections: {
-            type: Boolean,
-            default: true,
-        },
-        items: {
-            type: Boolean,
-            default: true,
-        },
-        messaging: {
+        colleing: {
             type: Boolean,
             default: true,
         },

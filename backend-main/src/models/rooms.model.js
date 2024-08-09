@@ -12,8 +12,7 @@ const ChatRoomModel = mongoose.Schema(
             ref: "users",
             required: true,
         },
-        receiver_id: {
-            type: mongoose.SchemaTypes.ObjectId,
+        receivse.SchemaTypes.ObjectId,
             ref: "users",
             required: true,
         },
@@ -23,4 +22,4 @@ const ChatRoomModel = mongoose.Schema(
     }
 );
 
-export default mongoose.model("chat_rooms", ChatRoomModel);
+export default mongoose.model("chat_roos", ChatRoomModel);

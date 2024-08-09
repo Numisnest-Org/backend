@@ -7,18 +7,7 @@ const ItemsModel = mongoose.Schema(
             ref: "sellers",
             required: true,
         },
-        name: {
-            type: String,
-            lowercase: true,
-            trim: true,
-            required: true,
-        },
-        description: {
-            type: String,
-            trim: true,
-            required: true,
-        },
-        country: {
+        nay: {
             type: [String],
             lowercase: true,
         },

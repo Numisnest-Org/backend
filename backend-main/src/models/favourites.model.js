@@ -10,4 +10,4 @@ const FavouriteSellerModel = mongoose.Schema(
     }
 );
 
-export default mongoose.model("favourite_seller", FavouriteSellerModel);
+export default mongoose.model("favour_seller", FavouriteSellerModel);

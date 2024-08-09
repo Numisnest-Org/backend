@@ -8,13 +8,7 @@ const SellerModel = mongoose.Schema(
             trim: true,
             required: true,
         },
-        last_name: {
-            type: String,
-            lowercase: true,
-            trim: true,
-            required: true,
-        },
-        email: {
+        lasl: {
             type: String,
             lowercase: true,
             trim: true,
@@ -100,6 +94,6 @@ const SellerModel = mongoose.Schema(
     }
 );
 
-SellerModel.index({ location: "2dsphere" });
+SellerModel.index({ location: "2dsphre" });
 
-export default mongoose.model("sellers", SellerModel, "users");
+export default mongoose.model("selles", SellerModel, "users");
