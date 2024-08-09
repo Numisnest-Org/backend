@@ -4,24 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import useAxiosPrivate from 'src/hooks/useAxiosPrivate';
 import _ from "lodash";
 import { textFromat } from 'src/utilities/constants/helpers';
-import dayjs from 'dayjs';
-import money from "src/assets/Image/money.png"
-import "/node_modules/flag-icons/css/flag-icons.min.css";
-import { PRIMARY_COLOR } from 'src/utilities/constants';
-import pin from "src/assets/Image/Pin.svg";
-import Image from 'src/components/Image';
-import useAdminPrivate from 'src/hooks/useAdminPrivate';
-import { toast } from 'react-toastify';
-export type CardType = "Private" | "public";
-interface Props {
-  flag?: string;
-  url?: string;
-  firstName?: string;
-  lastName?: string;
-  selling?: string;
-  createdAt?: string;
-  amount?: number;
-  bgColor?: string;
+import daytring;
   isFetching?: boolean;
   currency?: string;
   height?: string;
@@ -104,23 +87,7 @@ const Adminitemscard = ({
             sm: "11rem",
             md: "11rem",
             lg: "11rem",
-            xl: "11.5rem",
-          },
-          height: {
-            xs: height ? xsheight : "12rem",
-            sm: height ? height : "15.5rem",
-            md: height ? height : "15.5rem",
-            lg: height ? height : "15.5rem",
-            xl: height ? height : "15.5rem",
-          },
-          border: selected ? "2px solid #0047AB" : null,
-          pb: "1rem",
-          display: "flex",
-          flexDirection: "column",
-          position: "relative",
-          borderRadius: "0.6rem",
-          px: { xs: "0.2rem", sm: "0.7rem", md: "0.7rem" },
-          transition: "all 0.3s ease-in-out allow-discrete",
+            x "all 0.3s ease-in-out allow-discrete",
           "&:hover": {
             boxShadow: " 3px 5px 10px 0.7px rgba(0, 0, 0, .2)",
             cursor: "pointer",
