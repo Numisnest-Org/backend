@@ -1,14 +1,6 @@
 import http from "http";
 import app from "./app.js";
-import socketChat from "./socket/socketChat.js";
-import { Server } from "socket.io";
-
-const server = http.createServer(app);
-
-const PORT = process.env.PORT;
-
-const io = new Server(server, {
-    cors: {
+import socketCh
         origin: "*",
     },
 });
