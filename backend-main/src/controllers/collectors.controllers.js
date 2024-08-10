@@ -3,22 +3,7 @@ import ItemsModel from "../models/items.model.js";
 import SellersModel from "../models/sellers.model.js";
 import UsersModel from "../models/users.model.js";
 import { authCode } from "../utils/authCode.js";
-import { Encrypt, Decrypt } from "../utils/bcrypt.js";
-import Email from "../utils/emailer.js";
-import { userInfo } from "../utils/userInfo.js";
-import { accessToken, logoutUser } from "../utils/jwt.js";
-import {
-    successResponse,
-    failedResponse,
-    invalidRequest,
-    serverError,
-} from "../utils/response.handler.js";
-import FavouritesModel from "../models/favourites.model.js";
-import axios from "axios";
-import { countryToAlpha2 } from "country-to-iso";
-import cache from "memory-cache";
-import usersModel from "../models/users.model.js";
-import photoUploader from "../utils/photoUploader.js";
+import { Enr from "../utils/photoUploader.js";
 import CollectionsModels from "../models/collections.models.js";
 import RoomsModel from "../models/rooms.model.js";
 import MessageModel from "../models/message.model.js";
@@ -66,17 +51,7 @@ export const collectorSignUp = async (req, res) => {
                 400,
                 null,
                 "User with email already this exist"
-            );
-        }
-
-        if (password !== cpassword) {
-            return invalidRequest(res, 400, null, "pasword does not match");
-        }
-
-        const rxPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
-
-        if (!rxPattern.test(password)) {
-            return invalidRequest(
+            );st(
                 res,
                 400,
                 null,
@@ -121,15 +96,7 @@ export const collectorSignUp = async (req, res) => {
         );
     } catch (error) {
         return serverError(res, 500, null, error.message);
-    }
-};
-
-export const signIn = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-
-        if (!email || !password) {
-            return invalidRequest(res, 400, req.body, "all input are required");
+    }st(res, 400, req.body, "all input are required");
         }
 
         const userExist = await UsersModel.findOne({
@@ -176,12 +143,6 @@ export const signIn = async (req, res) => {
 
         const pin = Number(authCode(6));
 
-        if (!userExist.verify) {
-            //todo send email.....
-            await UsersModel.findOneAndUpdate(
-                {
-                    email: userExist.email,
-                },
                 {
                     auth_code: pin,
                 },
@@ -249,18 +210,7 @@ export const verifyEmail = async (req, res) => {
             verify: false,
         });
 
-        if (!pinUser) {
-            return invalidRequest(
-                res,
-                400,
-                null,
-                "invalid email or user email already verified"
-            );
-        }
-
-        const pinVer = await UsersModel.findOne({
-            email: email,
-            auth_code: Number(pin),
+        if (!pinde: Number(pin),
         });
 
         if (!pinVer) {
@@ -952,84 +902,7 @@ export const getItems = async (req, res) => {
                                                 },
                                                 {
                                                     $lte: ["$year", maxYear],
-                                                },
-                                            ],
-                                        },
-                                    },
-                                },
-                            ],
-                        },
-                    },
-                },
-                {
-                    $project: {
-                        // about: 0,
-                        delivery_options: 0,
-                        password: 0,
-                    },
-                },
-                {
-                    $lookup: {
-                        from: "users",
-                        let: {
-                            sid: "$seller_id",
-                        },
-                        pipeline: [
-                            {
-                                $match: {
-                                    $expr: {
-                                        $and: [
-                                            {
-                                                $eq: [
-                                                    "$_id",
-                                                    { $toObjectId: "$$sid" },
-                                                ],
-                                            },
-                                            {
-                                                $eq: ["$approved", true],
-                                            },
-                                        ],
-                                    },
-                                },
-                            },
-                            {
-                                $project: {
-                                    first_name: 1,
-                                    last_name: 1,
-                                    country: 1,
-                                },
-                            },
-                        ],
-                        as: "seller_info",
-                    },
-                },
-                {
-                    $match: { seller_info: { $ne: [] } },
-                },
-                {
-                    $match: {
-                        $expr: {
-                            $cond: {
-                                if: { $eq: [scountry, "everywhere"] },
-                                then: {
-                                    $ne: [
-                                        {
-                                            $arrayElemAt: [
-                                                "$seller_info.country",
-                                                0,
-                                            ],
-                                        },
-                                        "",
-                                    ],
-                                },
-                                else: {
-                                    $eq: [
-                                        {
-                                            $arrayElemAt: [
-                                                "$seller_info.country",
-                                                0,
-                                            ],
-                                        },
+                         
                                         scountry,
                                     ],
                                 },
