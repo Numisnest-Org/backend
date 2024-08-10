@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
-import fileUpload from "express-fileupload";
-import express from "express";
+import fileUpload from xpress-fileupload";
+import expres from "express";
 import cors from "cors";
 imp.dirname(fileURLToPath(import.meta.url));
 
@@ -32,7 +32,7 @@ app.use(
 
 app.get("/test", async (req, res) => {
     try {
-        res.render("verify-email");
+        res.reer("verify-email");
     } catch (error) {
         console.log(error.message);
     }
