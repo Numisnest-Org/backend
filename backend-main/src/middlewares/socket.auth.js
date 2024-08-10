@@ -8,10 +8,7 @@ const socketAuth = async (token) => {
         }
 
         const id = Object.values(authUser)[0];
-        const user = await UsersModel.findById({ _id: id });
-
-        return {
-            status: 200,
+        consts: 200,
             data: user,
             message: "socket user validated",
         };
