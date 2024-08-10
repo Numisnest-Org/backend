@@ -12,17 +12,7 @@ const adminAuth = async (req, res, next) => {
         if (user.role !== "admin") {
             return res.status(403).json({
                 status: 403,
-                message: "Access Denied, admin Route",
-                data: null,
-            });
-        }
-
-        if (user.suspended) {
-            return res.status(403).json({
-                status: 403,
-                message:
-                    "You are Suspended, please contact the customer service",
-                data: null,
+                message: "Acce
             });
         }
 
