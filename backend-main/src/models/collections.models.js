@@ -2,12 +2,7 @@ import mongoose from "mongoose";
 
 const ProductsCollectionsModel = mongoose.Schema(
     {
-        seller_id: {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: "sellers",
-            required: true,
-        },
-        t: false,
+        sellse,
         },
         items_id: {
             type: Array,
