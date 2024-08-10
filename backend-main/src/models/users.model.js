@@ -8,27 +8,7 @@ const UserModel = mongoose.Schema(
             trim: true,
             required: true,
         },
-        last_name: {
-            type: String,
-            lowercase: true,
-            trim: true,
-            required: true,
-        },
-        email: {
-            type: String,
-            uniq: true,
-            trim: true,
-            required: true,
-        },
-        password: {
-            type: String,
-            required: true,
-        },
-        photo: {
-            type: Object,
-        },
-        country_code: {
-            type: String,
+        last_name:tring,
             trim: true,
             required: true,
         },
