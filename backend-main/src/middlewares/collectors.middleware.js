@@ -12,18 +12,6 @@ const collectorAuth = async (req, res, next) => {
                 data: null,
             });
         }
-
-        if (user.suspended) {
-            return res.status(403).json({
-                status: 403,
-                message:
-                    "You are Suspended, please contact the customer service",
-                data: null,
-            });
-        }
-
-        req.user = user;
-
         next();
     } catch (error) {
         return res.status(400).json({
