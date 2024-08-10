@@ -1,6 +1,0 @@
-
-
-admin: change seller "level"(["new", "verified", "trusted"]), "approved" user, "suspended" user, change user "role"
-
-
-seller: toggle "available", "chat"
