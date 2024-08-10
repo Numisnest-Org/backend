@@ -7,14 +7,7 @@ import Email from "../utils/emailer.js";
 import photoUploader from "../utils/photoUploader.js";
 import videoUploader from "../utils/videoUploader.js";
 import {
-    successResponse,
-    failedResponse,
-    invalidRequest,
-    serverError,
-} from "../utils/response.handler.js";
-import { countryToAlpha2, countryToAlpha3 } from "country-to-iso";
-import FavouritesModel from "../models/favourites.model.js";
-import RoomsModel from "../models/rooms.model.js";
+    successel from "../models/rooms.model.js";
 import MessageModel from "../models/message.model.js";
 import CollectionsModels from "../models/collections.models.js";
 import { userInfo } from "../utils/userInfo.js";
@@ -33,14 +26,7 @@ export const sellerSignUp = async (req, res) => {
             password,
             cpassword,
             country_code,
-            mobile,
-            about,
-            delivery_option,
-            country,
-        } = req.body;
-
-        if (
-            !first_name ||
+            mobame ||
             !last_name ||
             !email ||
             !password ||
@@ -69,24 +55,7 @@ export const sellerSignUp = async (req, res) => {
 
         if (password !== cpassword) {
             return invalidRequest(res, 400, null, "pasword does not match");
-        }
-
-        const rxPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
-
-        if (!rxPattern.test(password)) {
-            return invalidRequest(
-                res,
-                400,
-                null,
-                "password is too weak, use capital & small letter, interger and not less than 8 character"
-            );
-        }
-
-        const iso = countryToAlpha2(country.toLowerCase());
-
-        const pin = Number(authCode(6));
-
-        const newUser = new SellersModel({
+        }er = new SellersModel({
             first_name: first_name,
             last_name: last_name,
             email: email,
@@ -130,19 +99,7 @@ export const getProfile = async (req, res) => {
         const user = req.user;
         const userDtls = await SellersModel.aggregate([
             {
-                $match: {
-                    _id: user._id,
-                },
-            },
-            {
-                $project: {
-                    password: 0,
-                    auth_code: 0,
-                    __v: 0,
-                },
-            },
-        ]);
-
+                $mat
         return successResponse(res, 200, userDtls[0], "seller details");
     } catch (error) {
         return serverError(res, 500, null, error.message);
