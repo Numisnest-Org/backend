@@ -6,12 +6,7 @@ import { Encrypt, Decrypt } from "../utils/bcrypt.js";
 import { accessToken, logoutUser } from "../utils/jwt.js";
 import {
     successResponse,
-    failedResponse,
-    invalidRequest,
-    serverError,
-} from "../utils/response.handler.js";
-import { userInfo } from "../utils/userInfo.js";
-import MessageModel from "../models/message.model.js";
+    failedResponel from "../models/message.model.js";
 import ItemsModel from "../models/items.model.js";
 import photoUploader from "../utils/photoUploader.js";
 import ContactusModel from "../models/contactus.model.js";
@@ -137,23 +132,6 @@ export const adminSignIn = async (req, res) => {
                 "user email not verified, check your email for verification code"
             );
         }
-
-        const token = await accessToken(
-            userExist._id,
-            userExist.email,
-            userExist.role
-        );
-
-        await UsersModel.findOneAndUpdate(
-            {
-                role: "admin",
-                _id: userExist._id,
-                email: email,
-            },
-            {
-                last_login: new Date(),
-            },
-            {
                 upsert: true,
             }
         );
@@ -374,36 +352,7 @@ export const adminUpdateSellerProfile = async (req, res) => {
 
         const profilePix = await photoUploader(
             req,
-            "profile_photo",
-            `profile/${seller.email}`
-        );
-
-        await SellersModel.findOneAndUpdate(
-            {
-                _id: id,
-            },
-            {
-                first_name: first_name,
-                last_name: last_name,
-                country_code: country_code,
-                mobile: mobile,
-                about: about,
-                delivery_option: delivery_option,
-                country: country?.toLowerCase(),
-                photo: profilePix === false ? seller.photo : profilePix,
-                approved: approved,
-                suspended: suspended,
-                level: level,
-            },
-            {
-                upsert: true,
-            }
-        );
-
-        return successResponse(res, 200, null, "seller profile updated");
-    } catch (error) {
-        return serverError(res, 500, null, error.message);
-    }
+            "profile_pho
 };
 
 export const delSeller = async (req, res) => {
@@ -578,30 +527,6 @@ export const disApproveCollector = async (req, res) => {
 
 export const adminGetCollectors = async (req, res) => {
     try {
-        const limit = req.query.limit || 20;
-        const page = req.query.page || 1;
-
-        let country = req?.query.country.toLowerCase();
-
-        let collectors = [];
-        let apage = [];
-
-        if (country === "everywhere") {
-            collectors = await UsersModel.aggregate([
-                {
-                    $match: {
-                        role: "collector",
-                    },
-                },
-                {
-                    $project: {
-                        about: 0,
-                        delivery_options: 0,
-                        password: 0,
-                    },
-                },
-                {
-                    $sort: {
                         updatedAt: 1,
                     },
                 },
@@ -740,14 +665,7 @@ export const pinItems = async (req, res) => {
 
         const pinned = req.query.pin;
 
-        await ItemsModel.findOneAndUpdate(
-            {
-                _id: id,
-            },
-            {
-                pinned: pinned,
-            },
-            {
+        await It
                 upsert: true,
             }
         );
@@ -935,26 +853,7 @@ export const adminGetItems = async (req, res) => {
                             $and: [
                                 {
                                     $eq: ["$available", true],
-                                },
-                                {
-                                    $cond: {
-                                        if: {
-                                            $eq: [country, "everywhere"],
-                                        },
-                                        then: {
-                                            $ne: ["$country", ""],
-                                        },
-                                        else: {
-                                            $eq: ["$country", country],
-                                        },
-                                    },
-                                },
-                            ],
-                        },
-                    },
-                },
-                {
-                    $count: "countPage",
+                      Page",
                 },
             ]);
         } else {
@@ -1345,65 +1244,7 @@ export const overView = async (req, res) => {
             // },
             {
                 $count: "counter",
-            },
-        ]);
-
-        const itemsToday = await ItemsModel.aggregate([
-            {
-                $match: {
-                    // $expr: {
-                    //     $and: [
-                    //         {
-                    //             $ne: ["$name", ""],
-                    //         },
-                    //         {
-                    //             $eq: ["$createdAt", new Date()],
-                    //         },
-                    //     ],
-                    // },
-                    createdAt: {
-                        $gte: today,
-                        $lt: tomorrow,
-                    },
-                },
-            },
-            {
-                $count: "counter",
-            },
-        ]);
-
-        const totMessages = await MessageModel.aggregate([
-            {
-                $count: "counter",
-            },
-        ]);
-
-        const messagesToday = await MessageModel.aggregate([
-            {
-                $match: {
-                    createdAt: {
-                        $gte: today,
-                        $lt: tomorrow,
-                    },
-                },
-            },
-            {
-                $count: "counter",
-            },
-        ]);
-
-        return successResponse(
-            res,
-            200,
-            {
-                tot_sellers: totSellers[0]?.counter,
-                sellers_today: sellersToday[0]?.counter || 0, //Number(sellersToday[0]?.counter)*100/Number(totSellers[0]?.counter),
-                tot_collectors: totCollectors[0]?.counter,
-                collectors_today: collectorsToday[0]?.counter || 0,
-                tot_items: totItems[0]?.counter,
-                items_today: itemsToday[0]?.counter || 0,
-                tot_messages: totMessages[0]?.counter,
-                messages_today: messagesToday[0]?.counter || 0,
+            },essagesToday[0]?.counter || 0,
             },
             "website overview fetched"
         );
