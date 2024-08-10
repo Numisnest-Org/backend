@@ -83,18 +83,7 @@ routerThree.get("/topsellers", topSeller);
 
 routerThree.get("/itemspie", totalItemsByCateg);
 
-routerThree.get("/contactus/messages", contactUsMessages);
-
-routerThree.get("/contactus/message/:id", contactUsMessage);
-
-/**
- * useful informations
- */
-routerThree.post("/information/add", usefulInfo);
-
-routerThree.put("/information/edit/:id", usefulInfoUpdate);
-
-routerThree.delete("/information/del/:id", usefulInfoDelete);
+routerT
 
 routerThree.get("/information/all", usefulInfoAll);
 
