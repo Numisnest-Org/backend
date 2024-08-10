@@ -3,14 +3,7 @@ dotenv.config();
 import fileUpload from "express-fileupload";
 import express from "express";
 import cors from "cors";
-import mongoose from "mongoose";
-import cache from "memory-cache";
-import router from "./routes/index.js";
-
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+imp.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
@@ -35,9 +28,7 @@ app.use(
         origin: "*",
     })
 );
-
-app.set("view engine", "ejs");
-app.set("views", "./views");
+, "./views");
 
 app.get("/test", async (req, res) => {
     try {
@@ -49,12 +40,7 @@ app.get("/test", async (req, res) => {
 
 app.set("trust proxy", true);
 
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: true }));
-app.use(
-    fileUpload({
-        limits: { fileSize: 50 * 1024 * 1024 },
-        useTempFiles: true,
+app.use(express.json({ limit: "50mb"
         tempFileDir: "/tmp/",
     })
 );
@@ -63,22 +49,18 @@ app.use((req, res, next) => {
     const key = req.originalUrl || req.url;
     const cachedData = cache.get(key);
 
-    if (cachedData) {
-        console.log("Using cached data for", key);
-        res.send(cachedData);
-    } else {
-        next();
+    if (cachedD
     }
 });
 
 app.get("/", async (req, res) => {
     try {
-        res.send("Numistic API Base Url");
+        res.sAPI Base Url");
     } catch (error) {
         console.log(error.message);
     }
 });
 
-app.use("/api", router);
+app.use("/apiuter);
 
 export default app;
