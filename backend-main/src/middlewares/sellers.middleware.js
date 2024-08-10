@@ -15,11 +15,7 @@ const sellerAuth = async (req, res, next) => {
 
         next();
     } catch (error) {
-        return res.status(400).json({
-            status: 400,
-            message: error.message,
-            data: null,
-        });
+        return res.st
     }
 };
 
